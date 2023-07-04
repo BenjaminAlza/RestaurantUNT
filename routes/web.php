@@ -12,7 +12,10 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
-
+use App\Http\Controllers\transporte\HomeController as TransporteHomeController;
+use App\Http\Controllers\transporte\LoginController as TransporteLoginController;
+use App\Http\Controllers\transporte\LogoutController as TransporteLogoutController;
+use App\Http\Controllers\transporte\RegisterController as TransporteRegisterController;
 
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
@@ -90,3 +93,13 @@ Route::get('pedido/{id}/detalle/confirmar',[DetalleController::class,'confirmar'
 Route::post('cliente/storemodel',[ClienteController::class,'storemodel'])->name('cliente.storemodel');
 
 Route::get('/pdf/{id}',[PDFController::class, 'generatePDF'])->name('pdfdownload');
+
+/*---------------------------TRANSPORTE Y DISTRIBUCION-------------------------*/
+
+// Route::get('/register',[TransporteRegisterController::class,'show'])->name('register');
+// Route::post('/register',[TransporteRegisterController::class,'register'])->name('register2');
+// Route::get('/login',[TransporteLoginController::class,'show'])->name('transporte.login');
+// Route::get('/',[TransporteHomeController::class,'landing'])->name('landing');
+// Route::post('/login2',[TransporteLoginController::class,'login'])->name('login2');
+// Route::get('home', [TransporteHomeController::class,'index'])->name('home');
+// Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
