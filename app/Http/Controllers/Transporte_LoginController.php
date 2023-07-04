@@ -10,7 +10,7 @@ class Transporte_LoginController extends Controller
     public function show()
     {
         if(Auth::check()){
-            return redirect('/home');
+            return redirect('/homeT');
         }
         return view('transporte.login');
     }

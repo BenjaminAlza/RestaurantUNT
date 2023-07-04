@@ -11,7 +11,7 @@ class Transporte_RegisterController extends Controller
 {
     public function show(){
         if(Auth::check()){
-            return redirect('/home');
+            return redirect('/homeTr');
         }
         return view('transporte.register');
     }

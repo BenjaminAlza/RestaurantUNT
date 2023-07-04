@@ -104,5 +104,5 @@ Route::post('/registerT',[Transporte_RegisterController::class,'register'])->nam
 Route::get('/loginTr',[Transporte_LoginController::class,'show'])->name('transporte.login');
 Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
 Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
-Route::get('home', [Transporte_HomeController::class,'index'])->name('homeT');
+Route::get('homeT', [Transporte_HomeController::class,'index'])->name('homeT');
 // Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
