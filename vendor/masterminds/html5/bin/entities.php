@@ -23,4 +23,4 @@ class Entities {
 var_export($table);
 echo ';
 }' . PHP_EOL;
-//print serialize($table);
+///print serialize($table);
