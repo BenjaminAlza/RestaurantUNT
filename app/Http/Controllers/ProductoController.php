@@ -18,7 +18,7 @@ class ProductoController extends Controller
         $buscar=$request->get('buscarpor');
         $producto=Producto::where('estado','=','1')->where('descripcion','like','%'.$buscar.'%')->paginate($this::PAGINATION);
        
-        return view('producto.index',compact('producto','buscar'));
+        return view('ventas.producto.index',compact('producto','buscar'));
     }
 
     
@@ -26,7 +26,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
-        return view('producto.create');
+        return view('ventas.producto.create');
     }
 
     public function store(Request $request)
@@ -72,7 +72,7 @@ class ProductoController extends Controller
     {
         //
         $producto=Producto::findOrFail($id);
-        return view('producto.edit',compact('producto'));
+        return view('ventas.producto.edit',compact('producto'));
     }
 
     public function update(Request $request, $id)
@@ -108,7 +108,7 @@ class ProductoController extends Controller
     {
         //confirmar eliminación (destroy)
         $producto=Producto::findOrFail($id);
-        return view('producto.confirmar',compact('producto'));
+        return view('ventas.producto.confirmar',compact('producto'));
     }
 
     public function destroy($id)

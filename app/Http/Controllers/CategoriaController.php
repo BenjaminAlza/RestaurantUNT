@@ -16,7 +16,7 @@ class CategoriaController extends Controller
 
         $categoria=Categoria::where('estado','=','1')->where('descripcion','like','%'.$buscarpor.'%')->paginate($this::PAGINATION);
        
-        return view('categoria.index',compact('categoria','buscarpor'));
+        return view('ventas.categoria.index',compact('categoria','buscarpor'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoriaController extends Controller
     public function create()
     {
         //
-        return view('categoria.create');
+        return view('ventas.categoria.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class CategoriaController extends Controller
     {
         //
         $categoria=Categoria::findOrFail($id);
-        return view('categoria.edit',compact('categoria'));
+        return view('ventas.categoria.edit',compact('categoria'));
     }
 
     /**
@@ -113,7 +113,7 @@ class CategoriaController extends Controller
     {
         //confirmar eliminación (destroy)
         $categoria=Categoria::findOrFail($id);
-        return view('categoria.confirmar',compact('categoria'));
+        return view('ventas.categoria.confirmar',compact('categoria'));
     }
 
     public function destroy($id)

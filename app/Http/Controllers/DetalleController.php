@@ -18,7 +18,7 @@ class DetalleController extends Controller
     {
         $pedido=Pedido::findOrFail($idpedido);
         $detalle = Detalle::where('idpedido','=',$idpedido)->get();
-        return view('detalle.lista',compact('detalle','pedido'));
+        return view('ventas.detalle.lista',compact('detalle','pedido'));
     }
 
     public function create()
@@ -26,7 +26,7 @@ class DetalleController extends Controller
         $detalle = Detalle::all();
         $producto = Producto::all();
         $pedido = Pedido::all();
-        return view('detalle.create',compact('detalle','producto','pedido'));
+        return view('ventas.detalle.create',compact('detalle','producto','pedido'));
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class DetalleController extends Controller
         $detalle->save();
         $buscar=$request->get('buscar');
         $pedido=Pedido::where('estado','=','1')->where('idpedido','like','%'.$buscar.'%')->get();
-        return view('pedidos.index',compact('pedido','buscar'));
+        return view('ventas.pedidos.index',compact('pedido','buscar'));
     }
 
     public function destroy($id)
@@ -57,7 +57,7 @@ class DetalleController extends Controller
     public function confirmar($id)
     {
         $detalle = Detalle::findOrFail($id);
-        return view('detalle.confirmar',compact('detalle'));
+        return view('ventas.detalle.confirmar',compact('detalle'));
     }
 
     public function cancelar()

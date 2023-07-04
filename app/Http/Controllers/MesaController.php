@@ -18,14 +18,14 @@ class MesaController extends Controller
         $buscar=$request->get('buscar');
         $mesas=Mesa::where('estado','=','1')->where('idmesa','like','%'.$buscar.'%')->paginate($this::PAGINATION);
        
-        return view('mesa.index',compact('mesas','buscar'));
+        return view('ventas.mesa.index',compact('mesas','buscar'));
     }
 
     public function mesas(Request $request){
         $buscar2=$request->get('buscar2');
         $mesas=Mesa::where('estado','=','1')->where('idmesa','like','%'.$buscar2.'%')->paginate($this::PAGINATION);
        
-        return view('mesa.mesas',compact('mesas','buscar2'));
+        return view('ventas.mesa.mesas',compact('mesas','buscar2'));
     }
     
 
@@ -34,7 +34,7 @@ class MesaController extends Controller
         //
         //$mozos=Mozo::all();
         $pedidos=Pedido::all();;
-        return view('mesa.create', compact('pedidos'));
+        return view('ventas.mesa.create', compact('pedidos'));
     }
 
     public function store(Request $request)
@@ -88,7 +88,7 @@ class MesaController extends Controller
         //$mozos=Mozo::all();
         $pedidos=Pedido::all();
         $mesa=Mesa::findOrFail($id);
-        return view('mesa.edit',compact('mesa','pedidos'));
+        return view('ventas.mesa.edit',compact('mesa','pedidos'));
     }
 
     public function update(Request $request, $id)
@@ -131,7 +131,7 @@ class MesaController extends Controller
     {
         //confirmar eliminación (destroy)
         $mesa=Mesa::findOrFail($id);
-        return view('mesa.confirmar',compact('mesa'));
+        return view('ventas.mesa.confirmar',compact('mesa'));
     }
 
     public function destroy($id)

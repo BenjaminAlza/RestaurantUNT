@@ -15,13 +15,13 @@ class PedidoController extends Controller
     {
         $buscar=$request->get('buscar');
         $pedido=Pedido::where('estado','=','1')->where('idpedido','like','%'.$buscar.'%')->paginate($this::PAGINATION);
-        return view('pedidos.index',compact('pedido','buscar'));
+        return view('ventas.pedidos.index',compact('pedido','buscar'));
     }
 
     public function create()
     {
         $cliente=Cliente::all();
-        return view('pedidos.create',compact('cliente'));
+        return view('ventas.pedidos.create',compact('cliente'));
     }
 
     public function create2($id)
@@ -29,7 +29,7 @@ class PedidoController extends Controller
         $mesa=Mesa::FindOrFail($id);
         
         $cliente=Cliente::all();
-        return view('pedidos.create2',compact('cliente','mesa'));
+        return view('ventas.pedidos.create2',compact('cliente','mesa'));
     }
 
     public function store(Request $request)
@@ -102,14 +102,14 @@ class PedidoController extends Controller
     public function show($id)
     {
         $pedido=Pedido::findOrFail($id);
-        return view('pedidos.show',compact('pedido'));
+        return view('ventas.pedidos.show',compact('pedido'));
     }
 
     public function edit($id)
     {
         $cliente=Cliente::all();
         $pedido=Pedido::findOrFail($id);
-        return view('pedidos.edit',compact('pedido','cliente'));
+        return view('ventas.pedidos.edit',compact('pedido','cliente'));
     }
     public function update(Request $request, $id)
     {
@@ -175,7 +175,7 @@ class PedidoController extends Controller
     {
         //confirmar eliminación (destroy)
         $pedido=Pedido::findOrFail($id);
-        return view('pedidos.confirmar',compact('pedido'));
+        return view('ventas.pedidos.confirmar',compact('pedido'));
     }
 
     public function destroy($id)
@@ -194,7 +194,7 @@ class PedidoController extends Controller
         $detalle = Detalle::where('idpedido','=',$id)->get();
         if($pedido->idcliente!=null)
         {
-            return view('pedidos.pago',compact('pedido','cliente','detalle'));
+            return view('ventas.pedidos.pago',compact('pedido','cliente','detalle'));
         }
         else
         {

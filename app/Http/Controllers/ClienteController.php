@@ -16,7 +16,7 @@ class ClienteController extends Controller
         $buscar=$request->get('buscarpor');
         $cliente=Cliente::where('estado','=','1')->where('nombres','like','%'.$buscar.'%')->paginate($this::PAGINATION);
        
-        return view('cliente.index',compact('cliente','buscar'));
+        return view('ventas.cliente.index',compact('cliente','buscar'));
     }
 
     
@@ -24,7 +24,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
-        return view('cliente.create');
+        return view('ventas.cliente.create');
     }
 
     public function store(Request $request)
@@ -82,7 +82,7 @@ class ClienteController extends Controller
     {
         //
         $cliente=Cliente::findOrFail($id);
-        return view('cliente.edit',compact('cliente'));
+        return view('ventas.cliente.edit',compact('cliente'));
     }
 
     public function update(Request $request, $id)
@@ -129,7 +129,7 @@ class ClienteController extends Controller
     {
         //confirmar eliminación (destroy)
         $cliente=Cliente::findOrFail($id);
-        return view('cliente.confirmar',compact('cliente'));
+        return view('ventas.cliente.confirmar',compact('cliente'));
     }
 
     public function destroy($id)
