@@ -16,6 +16,9 @@ use App\Http\Controllers\transporte\HomeController as TransporteHomeController;
 use App\Http\Controllers\transporte\LoginController as TransporteLoginController;
 use App\Http\Controllers\transporte\LogoutController as TransporteLogoutController;
 use App\Http\Controllers\transporte\RegisterController as TransporteRegisterController;
+use App\Http\Controllers\Transporte_HomeController;
+use App\Http\Controllers\Transporte_LoginController;
+use App\Http\Controllers\Transporte_RegisterController;
 
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
@@ -96,10 +99,10 @@ Route::get('/pdf/{id}',[PDFController::class, 'generatePDF'])->name('pdfdownload
 
 /*---------------------------TRANSPORTE Y DISTRIBUCION-------------------------*/
 
-// Route::get('/register',[TransporteRegisterController::class,'show'])->name('register');
-// Route::post('/register',[TransporteRegisterController::class,'register'])->name('register2');
-// Route::get('/login',[TransporteLoginController::class,'show'])->name('transporte.login');
-// Route::get('/',[TransporteHomeController::class,'landing'])->name('landing');
-// Route::post('/login2',[TransporteLoginController::class,'login'])->name('login2');
-// Route::get('home', [TransporteHomeController::class,'index'])->name('home');
+Route::get('/registerTr',[Transporte_RegisterController::class,'show'])->name('transporte.register');
+Route::post('/registerT',[Transporte_RegisterController::class,'register'])->name('registerT');
+Route::get('/loginTr',[Transporte_LoginController::class,'show'])->name('transporte.login');
+Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
+Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
+Route::get('home', [Transporte_HomeController::class,'index'])->name('homeT');
 // Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
