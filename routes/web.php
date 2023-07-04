@@ -19,7 +19,9 @@ use App\Http\Controllers\transporte\RegisterController as TransporteRegisterCont
 use App\Http\Controllers\Transporte_HomeController;
 use App\Http\Controllers\Transporte_LoginController;
 use App\Http\Controllers\Transporte_RegisterController;
-
+use App\Http\Controllers\Almacen_LoginController;
+use App\Http\Controllers\Almacen_HomeController;
+use App\Http\Controllers\Almacen_RegisterController;
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register2');
@@ -106,3 +108,12 @@ Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
 Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
 Route::get('homeT', [Transporte_HomeController::class,'index'])->name('homeT');
 // Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
+
+
+//-----------------------------ALMACEN-----------------------------------------
+Route::get('/loginAlm',[Almacen_LoginController::class,'show'])->name('almacen.login');
+Route::post('/loginA',[Almacen_LoginController::class,'login'])->name('loginA');
+Route::get('homeA', [Transporte_HomeController::class,'index'])->name('homeA');
+Route::get('/registerAlm',[Almacen_RegisterController::class,'show'])->name('almacen.register');
+Route::post('/registerA',[Almacen_RegisterController::class,'register'])->name('registerA');
+

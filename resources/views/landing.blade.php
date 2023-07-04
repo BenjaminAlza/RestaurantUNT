@@ -31,7 +31,7 @@
                     <div class="dropdown-menu">
                        <a class="dropdown-item" href="{{route('ventas.login')}}">Subsistema de Ventas</a>
                        <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="#">Subsistema de Almacen</a>
+                       <a class="dropdown-item" href="{{route('almacen.login')}}">Subsistema de Almacén</a>
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item" href="{{route('transporte.login')}}">Subsistema de Transporte y Distribución</a>
                        <div class="dropdown-divider"></div>
