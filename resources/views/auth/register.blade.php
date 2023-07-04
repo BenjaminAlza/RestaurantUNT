@@ -26,7 +26,7 @@
             <label for="exampleInputPassword1" class="form-label">Password-confirmation</label>
         </div>
         <div class="mb-3">
-            <a href="{{route('login')}}">Iniciar Sesion</a>
+            <a href="{{route('ventas.login')}}">Iniciar Sesion</a>
         </div>
         <button type="submit" class="btn btn-primary">Crear cuenta</button>
     </form>
