@@ -9,7 +9,7 @@
         }
     </style>
   
-    <form action="{{route('loginT')}}" method="POST">
+    <form action="{{route('loginT')}}" method="POST" >
         @csrf
         <div align="center">
             <img src="img/image1.png" width="220cm" alt="#">

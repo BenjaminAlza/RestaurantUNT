@@ -1,7 +1,14 @@
 @extends('layout.diseño1')
 
 @section('content')
-    <form action="{{route('registerT')}}" method="POST">
+    <style>        
+        body {
+        background-image: url('img/repartidor.jpg'); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
+    <form action="{{route('registerT')}}" method="POST" style="text-align: center">
         @csrf
         <h2>CREAR CUENTA</h2>
         @include('layout.mensaje')
@@ -25,10 +32,14 @@
             <input type="password" placeholder="password-confirmation" name="password_confirmation"  class="form-control" id="exampleInputPassword1">
             <label for="exampleInputPassword1" class="form-label">Password-confirmation</label>
         </div>
-        <div class="mb-3">
-            <a href="{{route('transporte.login')}}">Iniciar Sesion</a>
+        <div style="align-content: center"">
+            <a href="{{route('transporte.login')}}">
+                <button type="button" class="btn btn-success">
+                    Iniciar sesion
+                </button>
+            </a>
+            <button type="submit" class="btn btn-danger">Crear cuenta</button>
         </div>
-        <button type="submit" class="btn btn-primary">Crear cuenta</button>
     </form>
 @endsection
     
