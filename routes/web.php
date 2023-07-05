@@ -22,6 +22,8 @@ use App\Http\Controllers\Transporte_RegisterController;
 use App\Http\Controllers\Almacen_LoginController;
 use App\Http\Controllers\Almacen_HomeController;
 use App\Http\Controllers\Almacen_RegisterController;
+use App\Http\Controllers\Transporte_RepartidorController;
+
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register2');
@@ -108,6 +110,13 @@ Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
 Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
 Route::get('homeT', [Transporte_HomeController::class,'index'])->name('homeT');
 // Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
+//REPARTIDOR
+Route::resource('repartidor',Transporte_RepartidorController::class);
+Route::get('cancelarR',function(){
+    return redirect()->route('repartidor.index')->with('datos','Acción Cancelada ..!');
+})->name('repartidor.cancelar');
+Route::get('repartidor/{id}/confirmar',[Transporte_RepartidorController::class,'confirmar'])->name('repartidor.confirmar');
+
 
 
 //-----------------------------ALMACEN-----------------------------------------

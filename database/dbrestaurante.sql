@@ -24,6 +24,19 @@ CREATE TABLE CLIENTE
 	primary key(idcliente)
 );
 
+CREATE TABLE REPARTIDOR
+(
+	idRepartidor           INTEGER NOT NULL AUTO_INCREMENT,
+	dni                  CHAR(8) NULL,
+	nombres              varchar(40) NULL,
+	direccion            varchar(40) NULL,
+	email                VARCHAR(40) NULL,
+	telefono             varchar(12) NULL,
+	sueldo				 float NULL,
+	estado               TINYINT NULL,
+	primary key(idRepartidor)
+);
+
 CREATE TABLE COCINERO
 (
 	dni                  char(8) NOT NULL,

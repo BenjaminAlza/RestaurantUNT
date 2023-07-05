@@ -9,15 +9,21 @@ class Transporte_Repartidor extends Model
 {
     use HasFactory;
 
-    protected $table = 'administrador';
-    protected $primaryKey='dni';
+    protected $table = 'repartidor';
+    protected $primaryKey='idrepartidor';
     public $timestamps=false;
     protected $fillable = [
-        'tipoContrato'
+        'dni',
+        'nombres',
+        'direccion',
+        'email',
+        'telefono',
+        'sueldo'
     ];
 
-    public function usuario()
+    public function delivery()
     {
-        return $this->hasOne(Usuario::class,'dni','dni');
+        return $this->hasMany(Transporte_Delivery::class,'idRepartidor','idRepartidor');
     }
+    
 }
