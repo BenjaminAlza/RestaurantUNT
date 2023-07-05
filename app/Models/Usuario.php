@@ -28,5 +28,8 @@ class Usuario extends Model
     {
         return $this->hasMany(Usuario::class,'dni','dni');
     }
-
+    public function administrador()
+    {
+        return $this->hasMany(Usuario::class,'dni','dni');
+    }
 }

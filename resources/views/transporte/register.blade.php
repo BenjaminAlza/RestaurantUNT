@@ -21,7 +21,7 @@
             <label for="exampleInputPassword1" class="form-label">Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input readonly onmousedown="return false"; type="text" name="rol" class="form-control" id="exampleInputPassword1" value="mozo">
+            <input readonly onmousedown="return false"; type="text" name="rol" class="form-control" id="exampleInputPassword1" value="administrador">
             <label for="exampleInputPassword1" class="form-label">Rol</label>
         </div>
         <div class="form-floating mb-3">
