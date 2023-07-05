@@ -12,7 +12,7 @@ class Transporte_Administrador extends Model
     protected $primaryKey='dni';
     public $timestamps=false;
     protected $fillable = [
-        'tipoContrato'
+        'cargo'
     ];
 
     public function usuario()
