@@ -20,7 +20,7 @@ class Transporte_LoginController extends Controller
         
         if(!Auth::validate($credentials)){
             //dd('error');
-            return redirect()->to('transporte.login')->withErrors('Cuenta incorrecta');
+            return redirect()->to('loginTr')->withErrors('Cuenta incorrecta');
         }
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
