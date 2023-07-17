@@ -10,7 +10,7 @@ class Transporte_Repartidor extends Model
     use HasFactory;
 
     protected $table = 'repartidor';
-    protected $primaryKey='idrepartidor';
+    protected $primaryKey='idRepartidor';
     public $timestamps=false;
     protected $fillable = [
         'dni',
