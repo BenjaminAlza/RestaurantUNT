@@ -397,7 +397,7 @@
 
   <footer class="main-footer" align="center" style="height: 60px; background-color:#ffc44c">
     <div>
-      <p>®Copyright Derechos Reservados 2022 - Restaurante</p>
+      <p>®Copyright Derechos Reservados 2023 - Restaurante</p>
     </div>
     
    </footer>
