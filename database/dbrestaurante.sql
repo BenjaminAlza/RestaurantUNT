@@ -1,6 +1,6 @@
-drop database if exists dbrol;
-create database dbrol;
-use dbrol;
+drop database if exists bdcopia;
+create database bdcopia;
+use bdcopia;
 
 CREATE TABLE ADMINISTRADOR
 (

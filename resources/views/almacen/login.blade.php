@@ -9,13 +9,13 @@
         }
     </style>
   
-    <form action="{{route('loginT')}}" method="POST" >
+    <form action="{{route('loginA')}}" method="POST" >
         @csrf
         <div align="center">
             <img src="img/image1.png" width="220cm" alt="#">
         </div>
         <h2 align="center" style="margin: 20px; color:black">RESTAURANT "U.N.T."</h2>
-        <h5 align="center" style="margin: 20px; color:#008768">Subsistema de Transporte y distribucion</h5>
+        <h5 align="center" style="margin: 20px; color:#008768">Subsistema de Almacén</h5>
         @include('layout.mensaje')
         <div class="mb-3" align="center">
             <h3>

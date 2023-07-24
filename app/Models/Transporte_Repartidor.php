@@ -10,7 +10,7 @@ class Transporte_Repartidor extends Model
     use HasFactory;
 
     protected $table = 'repartidor';
-    protected $primaryKey='idrepartidor';
+    protected $primaryKey='idRepartidor';
     public $timestamps=false;
     protected $fillable = [
         'dni',
@@ -18,12 +18,17 @@ class Transporte_Repartidor extends Model
         'direccion',
         'email',
         'telefono',
-        'sueldo'
+        'sueldo',
+        'vehiculo',
+        'placa'
     ];
 
-    public function delivery()
+    public function pedido()
     {
-        return $this->hasMany(Transporte_Delivery::class,'idRepartidor','idRepartidor');
+        return $this->hasMany(Transporte_Pedido::class,'idRepartidor','idRepartidor');
     }
-    
+    public function vehiculo()
+    {
+        return $this->hasMany(Transporte_Vehiculo::class,'idRepartidor','idRepartidor');
+    }
 }

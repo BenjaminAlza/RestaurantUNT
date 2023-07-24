@@ -3,7 +3,7 @@
 @section('content')
     <style>        
         body {
-        background-image: url('img/repartidor.jpg'); 
+        background-image: url('img/personalAlm.jpg'); 
         background-repeat: no-repeat;
         background-size: cover;
         }

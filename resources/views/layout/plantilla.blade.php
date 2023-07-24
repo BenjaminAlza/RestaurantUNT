@@ -352,6 +352,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-user-circle"></i>
+              <p>
+                CLIENTE DELIVERY
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('clienteT.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Listado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('clienteT.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar Cliente</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         @endif
     <!--     <li class="nav-item">
             <a href="#" class="nav-link">
@@ -397,7 +420,7 @@
 
   <footer class="main-footer" align="center" style="height: 60px; background-color:#ffc44c">
     <div>
-      <p>®Copyright Derechos Reservados 2022 - Restaurante</p>
+      <p>®Copyright Derechos Reservados 2023 - Restaurante</p>
     </div>
     
    </footer>

@@ -12,17 +12,22 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\transporte\HomeController as TransporteHomeController;
-use App\Http\Controllers\transporte\LoginController as TransporteLoginController;
-use App\Http\Controllers\transporte\LogoutController as TransporteLogoutController;
-use App\Http\Controllers\transporte\RegisterController as TransporteRegisterController;
 use App\Http\Controllers\Transporte_HomeController;
 use App\Http\Controllers\Transporte_LoginController;
 use App\Http\Controllers\Transporte_RegisterController;
 use App\Http\Controllers\Almacen_LoginController;
 use App\Http\Controllers\Almacen_HomeController;
+use App\Http\Controllers\Almacen_InsumoController;
 use App\Http\Controllers\Almacen_RegisterController;
+use App\Http\Controllers\Transporte_ClienteController;
+use App\Http\Controllers\Transporte_DetallePedidoController;
+use App\Http\Controllers\Transporte_LogoutController;
+use App\Http\Controllers\Transporte_PedidoController;
+use App\Http\Controllers\Transporte_ProductoController;
 use App\Http\Controllers\Transporte_RepartidorController;
+use App\Http\Controllers\Transporte_ReporteController;
+use App\Models\Almacen_Insumo;
+use App\Models\Transporte_DetallePedido;
 
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
@@ -109,7 +114,7 @@ Route::get('/loginTr',[Transporte_LoginController::class,'show'])->name('transpo
 Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
 Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
 Route::get('homeT', [Transporte_HomeController::class,'index'])->name('homeT');
-// Route::get('/logout',[TransporteLogoutController::class,'logout'])->name('logout');
+Route::get('/logout',[Transporte_LogoutController::class,'logout'])->name('logoutT');
 //REPARTIDOR
 Route::resource('repartidor',Transporte_RepartidorController::class);
 Route::get('cancelarR',function(){
@@ -117,12 +122,50 @@ Route::get('cancelarR',function(){
 })->name('repartidor.cancelar');
 Route::get('repartidor/{id}/confirmar',[Transporte_RepartidorController::class,'confirmar'])->name('repartidor.confirmar');
 
+//CLIENTE
+Route::resource('clienteT',Transporte_ClienteController::class);
+Route::get('cancelarC',function(){
+    return redirect()->route('clienteT.index')->with('datos','Acción Cancelada ..!');
+})->name('clienteT.cancelar');
+Route::get('clienteT/{id}/confirmar',[Transporte_ClienteController::class,'confirmar'])->name('clienteT.confirmar');
 
+//PRODUCTO
+Route::resource('productoT',Transporte_ProductoController::class);
+Route::get('cancelarP',function(){
+    return redirect()->route('productoT.index')->with('datos','Acción Cancelada ..!');
+})->name('productoT.cancelar');
+Route::get('productoT/{id}/confirmar',[Transporte_ProductoController::class,'confirmar'])->name('productoT.confirmar');
+
+//PEDIDO
+Route::resource('pedidoT',Transporte_PedidoController::class);
+Route::get('cancelarPe',function(){
+    return redirect()->route('pedidoT.index')->with('datos','Acción Cancelada ..!');
+})->name('pedidoT.cancelar');
+Route::get('pedidoT/{id}/confirmar',[Transporte_PedidoController::class,'confirmar'])->name('pedidoT.confirmar');
+
+//DETALLE PEDIDO
+Route::resource('detalleT',Transporte_DetallePedidoController::class);
+Route::get('cancelarDeP',function(){
+    return redirect()->route('detalleT.index')->with('datos','Acción Cancelada ..!');
+})->name('detalleT.cancelar');
+Route::get('detalleT/{id}/confirmar',[Transporte_DetallePedidoController::class,'confirmar'])->name('detalleT.confirmar');
+
+//REPORTE 
+Route::get('/reporte-clientes', [Transporte_ReporteController::class, 'generarReportePDFCliente'])->name('reporte.clientesT');
+Route::get('/reporte-Repartidores', [Transporte_ReporteController::class, 'generarReportePDFRepartidor'])->name('reporte.repartidoresT');
+Route::get('/reporte-Productos', [Transporte_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.productosT');
+Route::get('/reporte-Pedidos', [Transporte_ReporteController::class, 'generarReportePDFPedido'])->name('reporte.pedidosT');
+Route::get('/reporte-Pedidos-Enviados', [Transporte_ReporteController::class, 'generarReportePDFPedidoDetalle'])->name('reporte.pedidosDetalleT');
 
 //-----------------------------ALMACEN-----------------------------------------
 Route::get('/loginAlm',[Almacen_LoginController::class,'show'])->name('almacen.login');
 Route::post('/loginA',[Almacen_LoginController::class,'login'])->name('loginA');
-Route::get('homeA', [Transporte_HomeController::class,'index'])->name('homeA');
+Route::get('homeA', [Almacen_HomeController::class,'index'])->name('homeA');
 Route::get('/registerAlm',[Almacen_RegisterController::class,'show'])->name('almacen.register');
 Route::post('/registerA',[Almacen_RegisterController::class,'register'])->name('registerA');
 
+Route::resource('insumoA',Almacen_InsumoController::class);
+Route::get('cancelarI',function(){
+    return redirect()->route('insumoA.index')->with('datos','Acción Cancelada ..!');
+})->name('insumoA.cancelar');
+Route::get('insumoA/{id}/confirmar',[Almacen_InsumoController::class,'confirmar'])->name('productoT.confirmar');

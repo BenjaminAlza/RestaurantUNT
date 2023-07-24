@@ -35,7 +35,9 @@ class Transporte_RepartidorController extends Controller
             'direccion' => 'required|max:40',
             'email' => 'required|max:40',
             'telefono' => 'required|max:12',
-            'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/'
+            'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/',
+            'vehiculo'=>'required|max:30',
+            'placa'=>'required|max:10'
             
         ],
         [
@@ -50,7 +52,11 @@ class Transporte_RepartidorController extends Controller
             'telefono.required' => 'Ingrese telefono de repartidor',
             'telefono.max' => 'Máximo 12 caracteres para el telefono',
             'sueldo' => 'Ingrese sueldo del repartidor',
-            'sueldo.max' =>'Solo se permite numeros enteros y decimales'
+            'sueldo.max' =>'Solo se permite numeros enteros y decimales',
+            'vehiculo' => 'Ingrese vehiculo del repartidor',
+            'vehiculo.max' =>'Máximo 30 caracteres',
+            'placa' => 'Ingrese placa del vehiculo',
+            'placa.max' =>'Máximo 10 caracteres'
         ]);
         $repartidor = new Transporte_Repartidor();
         $repartidor->dni = $request->dni;
@@ -59,6 +65,8 @@ class Transporte_RepartidorController extends Controller
         $repartidor->email = $request->email;
         $repartidor->telefono = $request->telefono;
         $repartidor->sueldo = $request->sueldo;
+        $repartidor->vehiculo = $request->vehiculo;
+        $repartidor->placa = $request->placa;
         $repartidor->estado = '1';
         $repartidor->save();
         return redirect()->route('repartidor.index')->with('datos','Repartidor Nuevo Guardado ...!');
@@ -98,7 +106,9 @@ class Transporte_RepartidorController extends Controller
             'direccion' => 'required|max:40',
             'email' => 'required|max:40',
             'telefono' => 'required|max:12',
-            'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/'
+            'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/',
+            'vehiculo'=>'required|max:30',
+            'placa'=>'required|max:10'
         ],
         [
             'dni.required' => 'Ingrese DNI de repartidor',
@@ -112,7 +122,12 @@ class Transporte_RepartidorController extends Controller
             'telefono.required' => 'Ingrese telefono de repartidor',
             'telefono.max' => 'Máximo 12 caracteres para el telefono',
             'sueldo' => 'Ingrese sueldo del repartidor',
-            'sueldo.max' =>'Solo se permite numeros enteros y decimales'
+            'sueldo.max' =>'Solo se permite numeros enteros y decimales',
+            'vehiculo' => 'Ingrese vehiculo del repartidor',
+            'vehiculo.max' =>'Máximo 30 caracteres',
+            'placa' => 'Ingrese placa del vehiculo',
+            'placa.max' =>'Máximo 10 caracteres'
+
         ]);
         $repartidor=Transporte_Repartidor::findOrFail($id);
         $repartidor->dni = $request->dni;
@@ -121,6 +136,8 @@ class Transporte_RepartidorController extends Controller
         $repartidor->email = $request->email;
         $repartidor->telefono = $request->telefono;
         $repartidor->sueldo = $request->sueldo;
+        $repartidor->vehiculo = $request->vehiculo;
+        $repartidor->placa = $request->placa;
         $repartidor->save();
         return redirect()->route('repartidor.index')->with('datos','Repartidor Actualizado ...!');
     }
