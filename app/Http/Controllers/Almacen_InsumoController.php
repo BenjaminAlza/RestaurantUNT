@@ -139,6 +139,6 @@ class Almacen_InsumoController extends Controller
         $insumoAlm=Almacen_Insumo::findOrFail($id);
         $insumoAlm->estado='0';
         $insumoAlm->save();
-        return redirect()->route('insumoA.index')->with('datos','Producto Eliminado ...!');
+        return redirect()->route('insumoA.index')->with('datos','Insumo Eliminado ...!');
     }
 }
