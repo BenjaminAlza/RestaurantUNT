@@ -1,6 +1,6 @@
-@extends('transporte.plantillaT')
+@extends('almacen.plantillaA')
 
-@section('titulo', 'Editar Producto')
+@section('titulo', 'Editar registro de insumo')
 
 @section('contenido')
 <div class="container">
@@ -9,47 +9,88 @@
             <div class="card">
                 <div class="card-header bg-warning text-white" style="text-align: center">
                     <h1 class="mb-0">
-                        <i class="fas fa-edit"></i> Editar Producto
+                        <i class="fas fa-edit"></i> Editar insumo
                     </h1>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('productoT.update', $productoT->idProducto)}}">
+                    <form method="POST" action="{{route('insumoA.update', $insumoAlm->idInsumo)}}">
                         @method('put')
                         @csrf
                         <div class="form-group">
-                            <label for="id">ID:</label>
-                            <input class="form-control" type="text" id="id" name="id" value="{{$productoT->idProducto}}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Descripción:</label>
-                            <input class="form-control @error('descripcion') is-invalid @enderror" type="text" id="descripcion" name="descripcion" value="{{$productoT->descripcion}}"/>
+                            <label for="descripcion" class="control-label">Nombre:</label>
+                            <input class="form-control @error('nombreIn') is-invalid @enderror" type="text" value="{{$insumoAlm->nombreIn}} " id="nombreIn" name="nombreIn" required />
                             <!-- Mensaje posible de error -->
-                            @error('descripcion')
+                            @error('nombreIn')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{$message}}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="precio">Precio:</label>
-                            <input class="form-control @error('precio') is-invalid @enderror" type="text" id="precio" name="precio" value="{{$productoT->precio}}"/>
+                            <label for="descripcion" class="control-label">Descripción:</label>
+                            <input class="form-control @error('descripcionIn') is-invalid @enderror" value="{{$insumoAlm->descripcionIn }}" type="text" id="descripcionIn" name="descripcionIn" required />
                             <!-- Mensaje posible de error -->
-                            @error('precio')
+                            @error('descripcionIn')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion" class="control-label">Fecha de adquisición:</label>
+                            <input class="form-control @error('fechaAdquisicion') is-invalid @enderror" value="{{$insumoAlm->fechaAdquisicion }}" type="date" id="fechaAdquisicion" name="fechaAdquisicion" required />
+                            <!-- Mensaje posible de error -->
+                            @error('fechaAdquisicion')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{$message}}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="stock">Stock:</label>
-                            <input class="form-control @error('stock') is-invalid @enderror" type="text" id="stock" name="stock" value="{{$productoT->stock}}"/>
+                            <label for="descripcion" class="control-label">Fecha de caducidad:</label>
+                            <input class="form-control @error('fechaCaducidad') is-invalid @enderror" value="{{$insumoAlm->fechaCaducidad}} " type="text" id="fechaCaducidad" name="fechaCaducidad" required />
                             <!-- Mensaje posible de error -->
-                            @error('stock')
+                            @error('fechaCaducidad')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{$message}}</strong>
                                 </span>
                             @enderror
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="lote" class="control-label">Lote:</label>
+                            <div class="input-group">
+                              
+                                <input class="form-control @error('lote') is-invalid @enderror"  value="{{$insumoAlm->lote}} " type="number" id="lote" name="lote" min="0" required />
+                            </div>
+                            <!-- Mensaje posible de error -->
+                            @error('lote')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock" class="control-label">Stock:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">S/.</span>
+                                </div>
+                                <input class="form-control @error('stockIn') is-invalid @enderror" value="{{$insumoAlm->stockIn}} " type="number" id="stockIn" name="stockIn" min="0" required />
+                            </div>
+                            <!-- Mensaje posible de error -->
+                            @error('stockIn')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                    
+
 
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary mr-3"><i class="fas fa-save"></i> Actualizar</button>

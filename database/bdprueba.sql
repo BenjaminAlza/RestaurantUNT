@@ -176,17 +176,15 @@ CREATE TABLE repartidor (
 
 
 
----------ALMACEN...-----
-
 CREATE TABLE insumo (
   idInsumo INT NOT NULL AUTO_INCREMENT,
   nombreIn VARCHAR(40) DEFAULT NULL,
   descripcionIn VARCHAR(40) DEFAULT NULL,
   fechaAdquisicion date DEFAULT NULL,
   fechaCaducidad date DEFAULT NULL,
-  lote varchar(10),
-  stockIn int,
-  estado int,
+  lote varchar(10) DEFAULT NULL,
+  stockIn int DEFAULT NULL,  
+  estado int DEFAULT NULL,
   PRIMARY KEY (idInsumo)
 );
 
@@ -194,6 +192,7 @@ CREATE TABLE insumo (
 
 ALTER TABLE USUARIO
 ADD PRIMARY KEY (dni);
+
 
 ALTER TABLE ADMINISTRADOR
 ADD FOREIGN KEY (dni) REFERENCES USUARIO(dni)

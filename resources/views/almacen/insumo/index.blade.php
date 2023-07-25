@@ -1,6 +1,6 @@
-@extends('transporte.plantillaT')
+@extends('almacen.plantillaA')
 
-@section('titulo', 'Productos')
+@section('titulo', 'Insumos')
 
 @section('contenido')
     <div class="container">
@@ -17,7 +17,7 @@
             <div class="col-md-4 text-md-center mb-3 mb-md-0">
                 <form class="form-inline" method="GET">
                     <div class="input-group">
-                        <input name="buscarporD" class="form-control" type="search" placeholder="Búsqueda por descripción" value="{{ $buscarPr }}">
+                        <input name="buscarIn" class="form-control" type="search" placeholder="Búsqueda por descripción" value="{{ $buscarIn }}">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit">Buscar</button>
                         </div>
@@ -45,11 +45,16 @@
         <table class="table table-bordered table-hover mt-4">
             <thead class="thead-light">
                 <tr class="text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Precio (S/.)</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Opciones</th>
+                            <td>ID</td>
+                            <td>NOMBRE</td>
+                            <td>DESCRIPCION</td>
+                            <td>ADQUISICIÓN</td>
+                            <td>CADUCIDAD</td>
+                            <td>LOTE</td>
+                            <td>STOCK</td>
+                            <td>
+                                OPCIONES
+                            </td>
                 </tr>
             </thead>
             <tbody>
@@ -81,7 +86,7 @@
         <div class="d-flex justify-content-center">
             <ul class="pagination">
                 {{-- Renderizar enlaces a páginas previas y siguientes --}}
-                @if ($productoT->onFirstPage())
+                @if ($insumoAlm->onFirstPage())
                     <li class="page-item disabled">
                         <span class="page-link">&laquo;</span>
                     </li>

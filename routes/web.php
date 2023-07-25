@@ -168,4 +168,4 @@ Route::resource('insumoA',Almacen_InsumoController::class);
 Route::get('cancelarI',function(){
     return redirect()->route('insumoA.index')->with('datos','Acción Cancelada ..!');
 })->name('insumoA.cancelar');
-Route::get('insumoA/{id}/confirmar',[Almacen_InsumoController::class,'confirmar'])->name('productoT.confirmar');
+Route::get('insumoA/{id}/confirmar',[Almacen_InsumoController::class,'confirmar'])->name('insumoA.confirmar');

@@ -20,10 +20,19 @@
             <input type="email" placeholder="email" name="email" class="form-control" id="exampleInputPassword1">
             <label for="exampleInputPassword1" class="form-label">Email</label>
         </div>
-        <div class="form-floating mb-3">
+
+        <select class="form-select"  name="rol" aria-label="Elige el rol">
+            <option selected>Seleccione el rol del nuevo usuario</option>
+            <option value="Personal de almacén">Personal de almacén</option>
+            <option value="Proveedor">Proveedor</option>
+            <option value="Gerente General">Gerente General</option>
+            <br>
+        </select> <br>
+
+        <!-- <div class="form-floating mb-3">
             <input readonly onmousedown="return false"; type="text" name="rol" class="form-control" id="exampleInputPassword1" value="Personal de almacén">
             <label for="exampleInputPassword1" class="form-label">Rol</label>
-        </div>
+        </div> -->
         <div class="form-floating mb-3">
           <input type="password" placeholder="password" name="password" class="form-control" id="exampleInputPassword1">
           <label for="exampleInputPassword1" class="form-label">Password</label>
