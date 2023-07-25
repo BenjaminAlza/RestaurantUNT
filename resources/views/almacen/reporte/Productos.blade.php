@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Registrados registrados para Delivery</title>
+    <title>Reporte de Productos</title>
     <style>
         /* Estilos CSS para el reporte */
         body {
@@ -51,7 +51,10 @@
 </head>
 
 <body>
-    <h1>Reporte de Productos - Delivery</h1>
+    <h1>Reporte de Productos</h1>
+    <br>
+    <br>
+    <h4>{{ auth()->user()->rol }}: {{ auth()->user()->name ?? auth()->user()->username }}</h4>
     <table>
         <thead>
             <tr>
@@ -64,7 +67,7 @@
         </thead>
         <tbody>
             <!-- Suponemos que los datos provienen de una base de datos y están almacenados en $repartidorT -->
-            @foreach ($productoT as $itemproductoT)
+            @foreach ($productoA as $itemproductoT)
                 <tr>
                     <td>{{ $itemproductoT->idProducto }}</td>
                     <td>{{ $itemproductoT->descripcion }}</td>

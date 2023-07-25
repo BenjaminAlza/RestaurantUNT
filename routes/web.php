@@ -18,7 +18,9 @@ use App\Http\Controllers\Transporte_RegisterController;
 use App\Http\Controllers\Almacen_LoginController;
 use App\Http\Controllers\Almacen_HomeController;
 use App\Http\Controllers\Almacen_InsumoController;
+use App\Http\Controllers\Almacen_ProductoController;
 use App\Http\Controllers\Almacen_RegisterController;
+use App\Http\Controllers\Almacen_ReporteController;
 use App\Http\Controllers\Transporte_ClienteController;
 use App\Http\Controllers\Transporte_DetallePedidoController;
 use App\Http\Controllers\Transporte_LogoutController;
@@ -169,3 +171,11 @@ Route::get('cancelarI',function(){
     return redirect()->route('insumoA.index')->with('datos','Acción Cancelada ..!');
 })->name('insumoA.cancelar');
 Route::get('insumoA/{id}/confirmar',[Almacen_InsumoController::class,'confirmar'])->name('insumoA.confirmar');
+
+Route::resource('productoA',Almacen_ProductoController::class);
+Route::get('cancelarPA',function(){
+    return redirect()->route('productoA.index')->with('datos','Acción Cancelada ..!');
+})->name('productoA.cancelar');
+Route::get('productoA/{id}/confirmar',[Almacen_ProductoController::class,'confirmar'])->name('productoA.confirmar');
+Route::get('/reporte-insumos', [Almacen_ReporteController::class, 'generarReportePDFInsumo'])->name('reporte.InsumosA');
+Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.ProductosA');

@@ -13,6 +13,9 @@
         </div>
     </div>
     <div class="row mt-5">
+
+
+    @if (auth()->user()->rol == 'Personal de almacén')
         <div class="col-md-6">
             <div class="card text-center">
                 <div class="card-body">
@@ -30,10 +33,27 @@
                     <h5 class="card-title">Gestión de Productos</h5>
                     <p class="card-text">Gestione los productos elaborados.</p>
                     <br>
-                    <a href="{{route('productoT.index')}}" class="btn btn-primary">Ver Productos</a>
+                    <a href="{{route('productoA.index')}}" class="btn btn-primary">Ver Productos</a>
                 </div>
             </div>
         </div>
+
+        @endif
+
+        @if (auth()->user()->rol == 'Proveedor')
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-utensils fa-4x mb-4" style="color: #ffc44c;"></i>
+                    <h5 class="card-title">Gestión de pedidos</h5>
+                    <p class="card-text">Visualice los pedidos.</p>
+                    <br>
+                    <a href="" class="btn btn-primary">Ver pedidos</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
     </div>
     
 </div>

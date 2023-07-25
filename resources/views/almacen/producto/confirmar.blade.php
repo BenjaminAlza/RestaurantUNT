@@ -1,4 +1,4 @@
-@extends('transporte.plantillaT')
+@extends('almacen.plantillaA')
 
 @section('contenido')
 <div class="container">
@@ -8,33 +8,33 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Código:</h5>
-                    <p class="card-text">{{$productoT->idProducto}}</p>
+                    <p class="card-text">{{$productoA->idProducto}}</p>
                 </div>
             </div>
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Descripción:</h5>
-                    <p class="card-text">{{$productoT->descripcion}}</p>
+                    <p class="card-text">{{$productoA->descripcion}}</p>
                 </div>
             </div>
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Precio:</h5>
-                    <p class="card-text">S/. {{$productoT->precio}}</p>
+                    <p class="card-text">S/. {{$productoA->precio}}</p>
                 </div>
             </div>
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Stock:</h5>
-                    <p class="card-text">S/. {{$productoT->stock}}</p>
+                    <p class="card-text">S/. {{$productoA->stock}}</p>
                 </div>
             </div>
             <hr>
-            <form method="POST" action="{{route('productoT.destroy',$productoT->idProducto)}}">
+            <form method="POST" action="{{route('productoA.destroy',$productoA->idProducto)}}">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-check-square"></i> Sí, eliminar</button>
-                <a href="{{route('productoT.cancelar')}}" class="btn btn-primary btn-lg"><i class="fas fa-times-circle"></i> No, cancelar</a>
+                <a href="{{route('productoA.cancelar')}}" class="btn btn-primary btn-lg"><i class="fas fa-times-circle"></i> No, cancelar</a>
             </form>
         </div>
         <div class="col-md-6 text-center">

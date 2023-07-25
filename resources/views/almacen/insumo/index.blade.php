@@ -27,7 +27,7 @@
 
             <!-- Botón Descargar PDF -->
             <div class="col-md-4 text-md-right">
-                <a href="" class="btn btn-primary">
+                <a href="{{ route('reporte.InsumosA') }}" class="btn btn-primary">
                     <i class="fas fa-file-pdf"></i> Descargar PDF
                 </a>
             </div>

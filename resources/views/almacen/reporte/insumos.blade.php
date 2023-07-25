@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Repartidores registrados para Delivery</title>
+    <title>Reporte de Inventario</title>
     <style>
         /* Estilos CSS para el reporte */
         body {
@@ -37,38 +37,38 @@
     </style>
 </head>
 <body>
-    <h1>Reporte de Repartidores - Delivery</h1>
+    <h1>Inventario de Insumos</h1>
+    <br>
+    <br>
+    <h4>{{ auth()->user()->rol }}: {{ auth()->user()->name ?? auth()->user()->username }}</h4>
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>DNI</th>
-                <th>Nombre</th>
-                <th>Dirección</th>
-                <th>Correo</th>
-                <th>Teléfono</th>
-                <th>Sueldo</th>
-                <th>Vehiculo</th>
-                <th>Placa del vehiculo</th>
-                <!-- Agrega aquí las columnas que desees mostrar en el reporte -->
+            <td>ID</td>
+                            <td>NOMBRE</td>
+                            <td>DESCRIPCION</td>
+                            <td>ADQUISICIÓN</td>
+                            <td>CADUCIDAD</td>
+                            <td>LOTE</td>
+                            <td>STOCK</td>
             </tr>
         </thead>
         <tbody>
             <!-- Suponemos que los datos provienen de una base de datos y están almacenados en $repartidorT -->
-            @foreach ($repartidorT as $repartidor)
-                <tr>
-                    <td>{{ $repartidor->idRepartidor }}</td>
-                    <td>{{ $repartidor->dni }}</td>
-                    <td>{{ $repartidor->nombres }}</td>
-                    <td>{{ $repartidor->direccion }}</td>
-                    <td>{{ $repartidor->email }}</td>
-                    <td>{{ $repartidor->telefono }}</td>
-                    <td>{{ $repartidor->sueldo }}</td>
-                    <td>{{ $repartidor->vehiculo }}</td>
-                    <td>{{ $repartidor->placa }}</td>
-                    <!-- Agrega aquí las celdas correspondientes a las columnas que desees mostrar en el reporte -->
-                </tr>
-            @endforeach
+            @foreach ($insumoA as $iteminsumoAlm)
+                        <tr class="text-center">
+                            <td>{{ $iteminsumoAlm->idInsumo }}</td>
+                            <td>{{ $iteminsumoAlm->nombreIn }}</td>
+                            <td>{{ $iteminsumoAlm->descripcionIn }}</td>
+                            <td>{{ $iteminsumoAlm->fechaAdquisicion }}</td>
+                            <td>{{ $iteminsumoAlm->fechaCaducidad }}</td>
+                            <td>{{ $iteminsumoAlm->lote }}</td>
+                            <td>{{ $iteminsumoAlm->stockIn }}</td>
+                           
+                        </tr>
+                    @endforeach
+
+         
         </tbody>
     </table>
 </body>

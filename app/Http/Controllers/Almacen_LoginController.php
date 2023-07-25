@@ -22,7 +22,7 @@ class Almacen_LoginController extends Controller
         
         if(!Auth::validate($credentials)){
             //dd('error');
-            return redirect()->to('login')->withErrors('Cuenta incorrecta');
+            return redirect()->to('loginAlm')->withErrors('Cuenta incorrecta');
         }
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);

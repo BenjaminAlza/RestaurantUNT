@@ -1,4 +1,4 @@
-@extends('transporte.plantillaT')
+@extends('almacen.plantillaA')
 
 @section('titulo', 'Crear Producto')
 
@@ -9,7 +9,7 @@
             <div class="card bg-light shadow">
                 <div class="card-body">
                     <h1 class="text-center mb-4">Nuevo Producto</h1>
-                    <form method="POST" action="{{route('productoT.store')}}">
+                    <form method="POST" action="{{route('productoA.store')}}">
                         @csrf
                         <div class="form-group">
                             <label for="descripcion" class="control-label">Descripción:</label>
@@ -51,7 +51,7 @@
 
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary mr-2"><i class="fas fa-save"></i> Grabar</button>
-                            <a href="{{route('productoT.cancelar')}}" class="btn btn-danger"><i class="fas fa-ban"></i> Cancelar</a>
+                            <a href="{{route('productoA.cancelar')}}" class="btn btn-danger"><i class="fas fa-ban"></i> Cancelar</a>
                         </div>
                     </form>
                 </div>

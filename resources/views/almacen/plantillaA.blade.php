@@ -151,13 +151,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('clienteT.index') }}" class="nav-link">
+                                        <a href="{{ route('productoA.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
                                             <p>Ver Listado</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('clienteT.create') }}" class="nav-link">
+                                        <a href="{{ route('productoA.create') }}" class="nav-link">
                                             <i class="fas fa-user-plus nav-icon"></i>
                                             <!-- Icono de usuario con signo + -->
                                             <p>Registrar lote de productos</p>
@@ -167,6 +167,29 @@
                             </li>
                         
                         @endif
+
+
+                        @if (auth()->user()->rol == 'Proveedor')
+                        <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-box"></i>
+                                    <p>
+                                        Insumos
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('insumoA.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
+                                            <p>Ver Pedidos</p>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>   
+                        @endif
+
                         <!-- Cerrar sesión -->
                         <li class="nav-item">
                             <a href="{{ route('logoutT') }}" class="nav-link">

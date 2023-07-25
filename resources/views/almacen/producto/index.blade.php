@@ -1,4 +1,4 @@
-@extends('transporte.plantillaT')
+@extends('almacen.plantillaA')
 
 @section('titulo', 'Productos')
 
@@ -10,7 +10,7 @@
         <div class="row">
             <!-- Botón Nuevo -->
             <div class="col-md-4 text-md-left mb-3 mb-md-0">
-                <a href="{{ route('productoT.create') }}" class="btn btn-warning"><i class="fas fa-user"></i> Nuevo Producto</a>
+                <a href="{{ route('productoA.create') }}" class="btn btn-warning"><i class="fas fa-user"></i> Nuevo Producto</a>
             </div>
 
             <!-- Búsqueda por descripción -->
@@ -27,7 +27,7 @@
 
             <!-- Botón Descargar PDF -->
             <div class="col-md-4 text-md-right">
-                <a href="{{ route('reporte.productosT') }}" class="btn btn-primary">
+                <a href="{{route ('reporte.ProductosA')}}" class="btn btn-primary">
                     <i class="fas fa-file-pdf"></i> Descargar PDF
                 </a>
             </div>
@@ -53,21 +53,21 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($productoT) <= 0)
+                @if (count($productoA) <= 0)
                     <tr>
                         <td colspan="5" class="text-center">No hay registros</td>
                     </tr>
                 @else
-                    @foreach ($productoT as $itemproductoT)
+                    @foreach ($productoA as $itemproductoA)
                         <tr class="text-center">
-                            <td>{{ $itemproductoT->idProducto }}</td>
-                            <td>{{ $itemproductoT->descripcion }}</td>
-                            <td>{{ $itemproductoT->precio }}</td>
-                            <td>{{ $itemproductoT->stock }}</td>
+                            <td>{{ $itemproductoA->idProducto }}</td>
+                            <td>{{ $itemproductoA->descripcion }}</td>
+                            <td>{{ $itemproductoA->precio }}</td>
+                            <td>{{ $itemproductoA->stock }}</td>
                             <td>
-                                <a href="{{ route('productoT.edit', $itemproductoT->idProducto) }}"
+                                <a href="{{ route('productoA.edit', $itemproductoA->idProducto) }}"
                                     class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                                <a href="{{ route('productoT.confirmar', $itemproductoT->idProducto) }}"
+                                <a href="{{ route('productoT.confirmar', $itemproductoA->idProducto) }}"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
                             </td>
                         </tr>
@@ -78,7 +78,7 @@
         <div class="d-flex justify-content-center">
             <ul class="pagination">
                 {{-- Renderizar enlaces a páginas previas y siguientes --}}
-                @if ($productoT->onFirstPage())
+                @if ($productoA->onFirstPage())
                     <li class="page-item disabled">
                         <span class="page-link">&laquo;</span>
                     </li>
@@ -89,8 +89,8 @@
                 @endif
 
                 {{-- Renderizar enlaces a páginas individuales --}}
-                @foreach ($productoT->getUrlRange(1, $productoT->lastPage()) as $page => $url)
-                    @if ($page == $productoT->currentPage())
+                @foreach ($productoA->getUrlRange(1, $productoA->lastPage()) as $page => $url)
+                    @if ($page == $productoA->currentPage())
                         <li class="page-item active" aria-current="page">
                             <span class="page-link">{{ $page }}</span>
                         </li>
@@ -102,9 +102,9 @@
                 @endforeach
 
                 {{-- Renderizar enlaces a páginas previas y siguientes --}}
-                @if ($productoT->hasMorePages())
+                @if ($productoA->hasMorePages())
                     <li class="page-item">
-                        <a class="page-link" href="{{ $productoT->nextPageUrl() }}" rel="next">&raquo;</a>
+                        <a class="page-link" href="{{ $productoA->nextPageUrl() }}" rel="next">&raquo;</a>
                     </li>
                 @else
                     <li class="page-item disabled">
