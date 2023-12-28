@@ -61,7 +61,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('logout')}}" role="button">
+        <a class="nav-link" href="{{route('logoutT')}}" role="button">
           <i class="fas fa-door-open"></i>
         </a>
       </li>

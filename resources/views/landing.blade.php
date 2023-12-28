@@ -37,7 +37,7 @@
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item" href="#">Subsistema de Compras</a>
                        <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="#">Subsistema de Personal</a>
+                       <a class="dropdown-item" href="{{route('personal.login')}}">Subsistema de Personal</a>
                    </div>
                   </li>
                 </ul>

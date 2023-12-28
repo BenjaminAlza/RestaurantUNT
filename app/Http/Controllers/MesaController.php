@@ -148,7 +148,7 @@ class MesaController extends Controller
         //
         $mesa=Mesa::findOrFail($id);
         $mesa->idpedido=null;
-        $mesa->disponibilidad=0;
+        $mesa->disponibilidad=1;
         $mesa->save();
         return redirect()->route('mesa.index')->with('datos','Mesa Limpiada ...!');
     }

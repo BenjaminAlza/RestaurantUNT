@@ -94,7 +94,7 @@ class PedidoController extends Controller
         $pedido->save();
         $mesa=Mesa::FindOrFail($id);
         $mesa->idpedido=$pedido->idpedido;
-        $mesa->disponibilidad = 1;
+        $mesa->disponibilidad = 0;
         $mesa->save();
         return redirect()->route('pedido.index')->with('datos','Pedido Nuevo Guardado ...!');
     }

@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\Personal_HomeController;
+use App\Http\Controllers\Personal_LoginController;
+use App\Http\Controllers\Personal_RegisterController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -30,6 +33,7 @@ use App\Http\Controllers\Transporte_RepartidorController;
 use App\Http\Controllers\Transporte_ReporteController;
 use App\Models\Almacen_Insumo;
 use App\Models\Transporte_DetallePedido;
+use App\Http\Controllers\PostulanteController;
 
 //*********************************** VENTAS **********************************************
 Route::get('/register',[RegisterController::class,'show'])->name('register');
@@ -107,6 +111,20 @@ Route::get('pedido/{id}/detalle/confirmar',[DetalleController::class,'confirmar'
 Route::post('cliente/storemodel',[ClienteController::class,'storemodel'])->name('cliente.storemodel');
 
 Route::get('/pdf/{id}',[PDFController::class, 'generatePDF'])->name('pdfdownload');
+/*--------------------------PERSONAL-------------------------*/
+Route::get('/registerPer',[Personal_RegisterController::class,'show'])->name('personal.register');
+Route::post('/registerPer',[Personal_RegisterController::class,'register'])->name('registerPer');
+Route::get('/loginPer',[Personal_LoginController::class,'show'])->name('personal.login');
+Route::get('/',[Personal_HomeController::class,'landing'])->name('landing');
+Route::post('/loginPer',[Personal_LoginController::class,'login'])->name('loginPer');
+Route::get('homePer', [Personal_HomeController::class,'index'])->name('homePer');
+Route::resource('personal', PostulanteController::class);
+
+Route::get('/personal/create', [PostulanteController::class, 'create'])->name('personal.create');
+Route::post('/personal', [PostulanteController::class, 'store'])->name('personal.store');
+Route::get('cancelar', function () {
+ return redirect()->route('personal.index')->with('datos','Acción Cancelada ..!');
+})->name('cancelar');
 
 /*---------------------------TRANSPORTE Y DISTRIBUCION-------------------------*/
 
