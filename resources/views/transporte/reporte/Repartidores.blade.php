@@ -29,9 +29,7 @@
         }
         tr:nth-child(even) {
             background-color: #f2f2f2;
-        }
-        /* Ajustar el ancho de las celdas de Dirección y Correo */
-        td:nth-child(4), td:nth-child(5) {
+        }        td:nth-child(4), td:nth-child(5) {
             width: 15%; /* Puedes ajustar el valor según tus necesidades */
         }
     </style>
@@ -50,11 +48,9 @@
                 <th>Sueldo</th>
                 <th>Vehiculo</th>
                 <th>Placa del vehiculo</th>
-                <!-- Agrega aquí las columnas que desees mostrar en el reporte -->
             </tr>
         </thead>
         <tbody>
-            <!-- Suponemos que los datos provienen de una base de datos y están almacenados en $repartidorT -->
             @foreach ($repartidorT as $repartidor)
                 <tr>
                     <td>{{ $repartidor->idRepartidor }}</td>
@@ -66,7 +62,6 @@
                     <td>{{ $repartidor->sueldo }}</td>
                     <td>{{ $repartidor->vehiculo }}</td>
                     <td>{{ $repartidor->placa }}</td>
-                    <!-- Agrega aquí las celdas correspondientes a las columnas que desees mostrar en el reporte -->
                 </tr>
             @endforeach
         </tbody>
