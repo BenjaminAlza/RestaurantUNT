@@ -1,9 +1,9 @@
 @extends('layout.diseño1')
 
 @section('content')
-    <style>        
+    <style>
         body {
-        background-image: url('img/repartidor.jpg'); 
+        background-image: url('img/repartidor.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         }
@@ -21,9 +21,14 @@
             <label for="exampleInputPassword1" class="form-label">Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input readonly onmousedown="return false"; type="text" name="rol" class="form-control" id="exampleInputPassword1" value="administrador">
-            <label for="exampleInputPassword1" class="form-label">Rol</label>
+            <select name="rol" class="form-select" id="rolSelect" aria-label="Seleccione un rol">
+                <option value="administrador" selected>Administrador</option>
+                <option value="repartidor">Repartidor</option>
+                <option value="cliente">Cliente</option>
+            </select>
+            <label for="rolSelect" class="form-label">Rol</label>
         </div>
+
         <div class="form-floating mb-3">
           <input type="password" placeholder="password" name="password" class="form-control" id="exampleInputPassword1">
           <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -42,4 +47,4 @@
         </div>
     </form>
 @endsection
-    
+
