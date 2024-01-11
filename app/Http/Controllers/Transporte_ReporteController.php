@@ -23,7 +23,7 @@ class Transporte_ReporteController extends Controller
     }
     public function generarReportePDFRepartidor()
     {
-        $repartidorT = Transporte_Repartidor::all();
+        $repartidorT = Transporte_Repartidor::where('estado', '=', '1')->get();
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.repartidores', compact('repartidorT'));
