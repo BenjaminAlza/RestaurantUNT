@@ -12,10 +12,10 @@ class Transporte_RepartidorController extends Controller
     public function index(Request $request)
     {
         //
-        $buscarRe=$request->get('buscarporRe');
-        $repartidorT=Transporte_Repartidor::where('estado','=','1')->where('descripcion','like','%'.$buscarRe.'%')->paginate($this::PAGINATION);
+        $buscar=$request->get('buscarpor');
+        $repartidor=Transporte_Repartidor::where('estado','=','1')->where('nombres','like','%'.$buscar.'%')->paginate($this::PAGINATION);
 
-        return view('transporte.repartidor.index',compact('repartidorT','buscarRe'));
+        return view('transporte.repartidor.index',compact('repartidor','buscar'));
     }
 
 
@@ -165,40 +165,4 @@ class Transporte_RepartidorController extends Controller
         $repartidor->save();
         return redirect()->route('repartidor.index')->with('datos','Repartidor Eliminado ...!');
     }
-
-    // public function storemodel(Request $request)
-    // {
-    //     $data=request()->validate([
-    //         'dni' => 'required|max:8',
-    //         'nombres' => 'required|max:40',
-    //         'direccion' => 'required|max:40',
-    //         'email' => 'required|max:40',
-    //         'telefono' => 'required|max:12',
-    //         'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/'
-    //     ],
-    //     [
-    //         'dni.required' => 'Ingrese DNI de repartidor',
-    //         'dni.max' => 'Máximo 8 caracteres para el dni',
-    //         'nombres.required' => 'Ingrese Nombres de repartidor',
-    //         'nombres.max' => 'Máximo 40 caracteres para el nombre',
-    //         'direccion.required' => 'Ingrese direccion de repartidor',
-    //         'direccion.max' => 'Máximo 40 caracteres para la direccion',
-    //         'email.required' => 'Ingrese correo de repartidor',
-    //         'email.max' => 'Máximo 40 caracteres para el email',
-    //         'telefono.required' => 'Ingrese telefono de repartidor',
-    //         'telefono.max' => 'Máximo 12 caracteres para el telefono',
-    //         'sueldo' => 'Ingrese sueldo del repartidor',
-    //         'sueldo.max' =>'Solo se permite numeros enteros y decimales'
-    //     ]);
-    //     $repartidor = new Transporte_Repartidor();
-    //     $repartidor->dni = $request->dni;
-    //     $repartidor->nombres = $request->nombres;
-    //     $repartidor->direccion = $request->direccion;
-    //     $repartidor->email = $request->email;
-    //     $repartidor->telefono = $request->telefono;
-    //     $repartidor->sueldo = $request->sueldo;
-    //     $repartidor->estado = '1';
-    //     $repartidor->save();
-    //     //return redirect()->route('pedido.index')->with('datos','Cliente Nuevo Guardado ...!');
-    // }
 }
