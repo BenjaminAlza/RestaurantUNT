@@ -9,14 +9,15 @@ use App\Models\Transporte_Pedido;
 use App\Models\Transporte_Producto;
 use App\Models\Transporte_Repartidor;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\App;
 
 class Transporte_ReporteController extends Controller
 {
     public function generarReportePDFCliente()
     {
-        $clienteT = Transporte_Cliente::all();
+        $clienteT = Transporte_Cliente::where('estado', '=', '1')->get();
 
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.clientes', compact('clienteT'));
 
         return $pdf->download('reporte_clientes.pdf');
@@ -25,7 +26,7 @@ class Transporte_ReporteController extends Controller
     {
         $repartidorT = Transporte_Repartidor::where('estado', '=', '1')->get();
 
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.repartidores', compact('repartidorT'));
 
         return $pdf->download('reporte_repartidores.pdf');
@@ -34,7 +35,7 @@ class Transporte_ReporteController extends Controller
     {
         $productoT = Transporte_Producto::where('estado', '=', '1')->get();
 
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.Productos', compact('productoT'));
 
         return $pdf->download('reporte_productos.pdf');
@@ -42,12 +43,8 @@ class Transporte_ReporteController extends Controller
     public function generarReportePDFPedido()
     {
         $pedidoT = Transporte_Pedido::all();
-        // Suponiendo que tienes una colección de pedidos en la variable $pedidoT
-        // $totalPedidos = $pedidoT->sum('cantidad');
-        // return view('transporte.reporte.pedidos', compact('pedidoT', 'totalPedidos'));
-
         $totalPedidos = $pedidoT->sum('cantidad');
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.Pedidos', compact('pedidoT', 'totalPedidos'));
 
         return $pdf->download('reporte_pedidos.pdf');
@@ -87,7 +84,7 @@ class Transporte_ReporteController extends Controller
             }
         }
 
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.PedidosEnviados', compact('detalleT', 'pagosPorCliente'));
 
         return $pdf->download('reporte_pedidosEnviados.pdf');
