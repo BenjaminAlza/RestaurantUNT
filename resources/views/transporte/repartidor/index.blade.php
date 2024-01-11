@@ -22,7 +22,7 @@
             <div class="col-md-8">
                 <form class="form-inline">
                     <div class="input-group">
-                        <input type="search" class="form-control border-secondary" name="buscarpor" placeholder="Búsqueda por Nombres" value="{{ $buscar }}">
+                        <input type="search" class="form-control border-secondary" name="buscarporRe" placeholder="Búsqueda por Nombres" value="{{ $buscar }}">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit"><i class="fas fa-search"></i> Buscar</button>
                         </div>
