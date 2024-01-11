@@ -25,12 +25,12 @@
                 </form>
             </div>
 
-            <!-- Botón Descargar PDF -->
+            {{-- <!-- Botón Descargar PDF -->
             <div class="col-md-4 text-md-right">
                 <a href="{{ route('reporte.productosT') }}" class="btn btn-primary">
                     <i class="fas fa-file-pdf"></i> Descargar PDF
                 </a>
-            </div>
+            </div> --}}
         </div>
 
         @if (session('datos'))
