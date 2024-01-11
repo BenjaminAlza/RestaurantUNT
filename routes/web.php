@@ -96,7 +96,7 @@ Route::put('pedido/store2/{id}',[PedidoController::class,'store2'])->name('pedid
 Route::put('pedido/update2/{id}',[PedidoController::class,'update2'])->name('pedido.update2');
 
 /* Detalle */
- 
+
 Route::resource('detalle', DetalleController::class);
 Route::get('detalle/lista/{id}',[DetalleController::class,'lista'])->name('detalle.lista');
 //Route::post('detalle/store2',[DetalleController::class,'store2'])->name('detalle.store2');
@@ -170,7 +170,7 @@ Route::get('cancelarDeP',function(){
 })->name('detalleT.cancelar');
 Route::get('detalleT/{id}/confirmar',[Transporte_DetallePedidoController::class,'confirmar'])->name('detalleT.confirmar');
 
-//REPORTE 
+//REPORTE
 Route::get('/reporte-clientes', [Transporte_ReporteController::class, 'generarReportePDFCliente'])->name('reporte.clientesT');
 Route::get('/reporte-Repartidores', [Transporte_ReporteController::class, 'generarReportePDFRepartidor'])->name('reporte.repartidoresT');
 Route::get('/reporte-Productos', [Transporte_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.productosT');

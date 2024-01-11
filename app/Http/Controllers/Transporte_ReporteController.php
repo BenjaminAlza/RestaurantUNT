@@ -32,7 +32,7 @@ class Transporte_ReporteController extends Controller
     }
     public function generarReportePDFProducto()
     {
-        $productoT = Transporte_Producto::all();
+        $productoT = Transporte_Producto::where('estado', '=', '1')->get();
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadView('transporte.reporte.Productos', compact('productoT'));
