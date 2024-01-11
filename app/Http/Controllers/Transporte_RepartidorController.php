@@ -14,11 +14,11 @@ class Transporte_RepartidorController extends Controller
         //
         $buscar=$request->get('buscarpor');
         $repartidor=Transporte_Repartidor::where('estado','=','1')->where('nombres','like','%'.$buscar.'%')->paginate($this::PAGINATION);
-       
+
         return view('transporte.repartidor.index',compact('repartidor','buscar'));
     }
 
-    
+
 
     public function create()
     {
@@ -38,7 +38,7 @@ class Transporte_RepartidorController extends Controller
             'sueldo' => 'required|numeric|regex:/^\d+(\.\d+)?$/',
             'vehiculo'=>'required|max:30',
             'placa'=>'required|max:10'
-            
+
         ],
         [
             'dni.required' => 'Ingrese DNI de repartidor',
@@ -143,7 +143,7 @@ class Transporte_RepartidorController extends Controller
     }
 
 
-    
+
     /**
      * Remove the specified resource from storage.
      *

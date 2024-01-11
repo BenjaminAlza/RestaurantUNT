@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transporte_Repartidor extends Model
 {
+    use SoftDeletes;
     use HasFactory;
 
     protected $table = 'repartidor';
@@ -27,8 +29,8 @@ class Transporte_Repartidor extends Model
     {
         return $this->hasMany(Transporte_Pedido::class,'idRepartidor','idRepartidor');
     }
-    public function vehiculo()
-    {
-        return $this->hasMany(Transporte_Vehiculo::class,'idRepartidor','idRepartidor');
-    }
+    // public function vehiculo()
+    // {
+    //     return $this->hasMany(Transporte_Vehiculo::class,'idRepartidor','idRepartidor');
+    // }
 }
