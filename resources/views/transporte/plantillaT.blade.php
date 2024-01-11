@@ -100,7 +100,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ route('home') }}" class="d-block"
+                        <a href="{{ route('homeT') }}" class="d-block"
                             style="text-transform: uppercase;">{{ auth()->user()->rol }}:
                             {{ auth()->user()->name ?? auth()->user()->username }}</a>
                     </div>
