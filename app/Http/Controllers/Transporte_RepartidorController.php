@@ -12,10 +12,10 @@ class Transporte_RepartidorController extends Controller
     public function index(Request $request)
     {
         //
-        $buscar=$request->get('buscarpor');
-        $repartidor=Transporte_Repartidor::where('estado','=','1')->where('nombres','like','%'.$buscar.'%')->paginate($this::PAGINATION);
+        $buscarRe=$request->get('buscarporD');
+        $repartidorT=Transporte_Repartidor::where('estado','=','1')->where('descripcion','like','%'.$buscarRe.'%')->paginate($this::PAGINATION);
 
-        return view('transporte.repartidor.index',compact('repartidor','buscar'));
+        return view('transporte.repartidor.index',compact('repartidorT','buscarRe));
     }
 
 
