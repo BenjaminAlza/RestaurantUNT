@@ -8,7 +8,7 @@
     <title>.:: RESTAURANT "U.N.T." ::.</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
-    
+
 </head>
 <body>
 
@@ -27,7 +27,7 @@
                   </li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true" style="font-size: 22px; color:white" >Sistemas del Restaurante</a>
-                    
+
                     <div class="dropdown-menu">
                        <a class="dropdown-item" href="{{route('ventas.login')}}">Subsistema de Ventas</a>
                        <div class="dropdown-divider"></div>
@@ -35,7 +35,7 @@
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item" href="{{route('transporte.login')}}">Subsistema de Transporte y Distribución</a>
                        <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="#">Subsistema de Compras</a>
+                       <a class="dropdown-item" href="{{ route('compras.login') }}">Subsistema de Compras</a>
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item" href="{{route('personal.login')}}">Subsistema de Personal</a>
                    </div>
@@ -78,7 +78,7 @@
                 </button>
               </div>
           </section>
-   
+
     <footer class="main-footer" id="piedepagina1" align="center" style="height: 60px; background-color:#ffc44c; padding-top:15px">
         <div style="">
           <p>®Copyright Derechos Reservados 2022 - RESTAURANT "U.N.T."</p>

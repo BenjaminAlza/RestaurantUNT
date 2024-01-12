@@ -9,13 +9,13 @@
         }
     </style>
 
-    <form action="{{route('loginA')}}" method="POST" >
+    <form action="{{route('compras.login')}}" method="POST" >
         @csrf
         <div align="center">
             <img src="img/image1.png" width="220cm" alt="#">
         </div>
         <h2 align="center" style="margin: 20px; color:black">RESTAURANT "U.N.T."</h2>
-        <h5 align="center" style="margin: 20px; color:#008768">Subsistema de Almacén</h5>
+        <h5 align="center" style="margin: 20px; color:#008768">Subsistema de Compras</h5>
         @include('layout.mensaje')
         <div class="mb-3" align="center">
             <h3>
@@ -31,7 +31,7 @@
             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3" align="center">
-            <a href="{{route('almacen.register')}}">
+            <a href="{{route('compras.register.show')}}">
                 <button type="button" class="btn btn-success">
                     Crear cuenta
                 </button>

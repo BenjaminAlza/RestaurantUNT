@@ -7,19 +7,13 @@
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `bdprueba`
 --
+
+drop database if exists bdprueba;
+create database bdprueba;
+use bdprueba;
 
 -- --------------------------------------------------------
 
@@ -671,6 +665,50 @@ ALTER TABLE `pedidodelivery`
   ADD CONSTRAINT `pedidodelivery_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `productodelivery` (`idProducto`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- compras
+--
+
+create table proveedores(
+    id int not null AUTO_INCREMENT,
+    razon_social varchar(100) not null,
+    representante varchar(100) not null,
+    tipo_documento varchar(20) null,
+    num_documento varchar(20) null,
+    direccion varchar(70) null,
+    telefono varchar(20) null,
+    email varchar(50) null,
+    primary key(id)
+);
+
+INSERT INTO `proveedores` (`id`, `razon_social`, `representante`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES (NULL, 'ZeroGroups SAC', 'zero', 'RUC', '20029182123', 'abc 123', '123123123', 'zero@zerogroups.com');
+INSERT INTO `proveedores` (`id`, `razon_social`, `representante`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES (NULL, 'ZeroGroups SAC', 'zero', 'RUC', '20029182124', 'abc 123', '123123123', 'uno@zerogroups.com');
+INSERT INTO `proveedores` (`id`, `razon_social`, `representante`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES (NULL, 'ZeroGroups SAC', 'zero', 'RUC', '20029182125', 'abc 123', '123123123', 'dos@zerogroups.com');
+INSERT INTO `proveedores` (`id`, `razon_social`, `representante`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES (NULL, 'ZeroGroups SAC', 'zero', 'RUC', '20029182126', 'abc 123', '123123123', 'tres@zerogroups.com');
+
+CREATE TABLE compras(
+    id int not null AUTO_INCREMENT,
+    proveedor_id int not null,
+    user_id bigint(20) UNSIGNED not null,
+    tipo_comprobante varchar(20) not null,
+    serie_comprobante varchar(7) null,
+    num_comprobante varchar (10) not null,
+    fecha datetime not null,
+    impuesto decimal (11,2) not null,
+    total decimal (11,2) not null,
+    estado varchar(20) not null,
+    primary key(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE detalle_compra(
+    id int not null AUTO_INCREMENT,
+    compra_id int not null,
+    producto_id int not null,
+    cantidad int not null,
+    precio decimal(11,2) not null,
+    estado char(1) null,
+    primary key(id),
+    FOREIGN KEY (compra_id) REFERENCES compras(id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES producto(idproducto)
+);

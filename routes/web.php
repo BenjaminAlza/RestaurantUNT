@@ -24,6 +24,11 @@ use App\Http\Controllers\Almacen_InsumoController;
 use App\Http\Controllers\Almacen_ProductoController;
 use App\Http\Controllers\Almacen_RegisterController;
 use App\Http\Controllers\Almacen_ReporteController;
+use App\Http\Controllers\Compras\LoginController as ComprasLoginController;
+use App\Http\Controllers\Compras_HomeController;
+use App\Http\Controllers\Compras_LoginController;
+use App\Http\Controllers\Compras_RegisterController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\Transporte_ClienteController;
 use App\Http\Controllers\Transporte_DetallePedidoController;
 use App\Http\Controllers\Transporte_LogoutController;
@@ -36,139 +41,139 @@ use App\Models\Transporte_DetallePedido;
 use App\Http\Controllers\PostulanteController;
 
 //*********************************** VENTAS **********************************************
-Route::get('/register',[RegisterController::class,'show'])->name('register');
-Route::post('/register',[RegisterController::class,'register'])->name('register2');
-Route::get('/login',[LoginController::class,'show'])->name('ventas.login');
-Route::get('/',[HomeController::class,'landing'])->name('landing');
-Route::post('/login2',[LoginController::class,'login'])->name('login2');
-Route::get('home', [HomeController::class,'index'])->name('home');
-Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register2');
+Route::get('/login', [LoginController::class, 'show'])->name('ventas.login');
+Route::get('/', [HomeController::class, 'landing'])->name('landing');
+Route::post('/login2', [LoginController::class, 'login'])->name('login2');
+Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
 
 /* Categoria */
-Route::resource('categoria',CategoriaController::class);
+Route::resource('categoria', CategoriaController::class);
 
-Route::get('cancelar',function(){
-    return redirect()->route('categoria.index')->with('datos','Acción Cancelada ..!');
+Route::get('cancelar', function () {
+    return redirect()->route('categoria.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar');
 
-Route::get('categoria/{id}/confirmar',[CategoriaController::class,'confirmar'])->name('categoria.confirmar');
+Route::get('categoria/{id}/confirmar', [CategoriaController::class, 'confirmar'])->name('categoria.confirmar');
 
 
 
 /* Producto */
-Route::resource('producto',ProductoController::class);
-Route::get('cancelar1',function(){
-    return redirect()->route('producto.index')->with('datos','Acción Cancelada ..!');
+Route::resource('producto', ProductoController::class);
+Route::get('cancelar1', function () {
+    return redirect()->route('producto.index')->with('datos', 'Acción Cancelada ..!');
 })->name('producto.cancelar');
-Route::get('producto/{id}/confirmar',[ProductoController::class,'confirmar'])->name('producto.confirmar');
+Route::get('producto/{id}/confirmar', [ProductoController::class, 'confirmar'])->name('producto.confirmar');
 
 
 /* Cliente */
-Route::resource('cliente',ClienteController::class);
-Route::get('cancelar2',function(){
-    return redirect()->route('cliente.index')->with('datos','Acción Cancelada ..!');
+Route::resource('cliente', ClienteController::class);
+Route::get('cancelar2', function () {
+    return redirect()->route('cliente.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cliente.cancelar');
-Route::get('cliente/{id}/confirmar',[ClienteController::class,'confirmar'])->name('cliente.confirmar');
+Route::get('cliente/{id}/confirmar', [ClienteController::class, 'confirmar'])->name('cliente.confirmar');
 
 /* Mesa */
-Route::resource('mesa',MesaController::class);
-Route::get('/mesas',[MesaController::class,'mesas'])->name('mesas');
-Route::get('cancelar3',function(){
-    return redirect()->route('mesa.index')->with('datos','Acción Cancelada ..!');
+Route::resource('mesa', MesaController::class);
+Route::get('/mesas', [MesaController::class, 'mesas'])->name('mesas');
+Route::get('cancelar3', function () {
+    return redirect()->route('mesa.index')->with('datos', 'Acción Cancelada ..!');
 })->name('mesa.cancelar');
-Route::get('/mesalimpiar/{id}',[MesaController::class,'limpiar'])->name('mesa.limpiar');
-Route::get('mesa/{id}/confirmar',[MesaController::class,'confirmar'])->name('mesa.confirmar');
+Route::get('/mesalimpiar/{id}', [MesaController::class, 'limpiar'])->name('mesa.limpiar');
+Route::get('mesa/{id}/confirmar', [MesaController::class, 'confirmar'])->name('mesa.confirmar');
 
 /* Pedido */
-Route::resource('pedido',PedidoController::class);
-Route::get('cancelar4',function(){
-    return redirect()->route('pedido.index')->with('datos','Acción Cancelada ..!');
+Route::resource('pedido', PedidoController::class);
+Route::get('cancelar4', function () {
+    return redirect()->route('pedido.index')->with('datos', 'Acción Cancelada ..!');
 })->name('pedido.cancelar');
-Route::get('pedido/{id}/confirmar',[PedidoController::class,'confirmar'])->name('pedido.confirmar');
-Route::get('pedido/{id}/create2',[PedidoController::class,'create2'])->name('pedido.create2');
-Route::get('pedido/{id}/pago',[PedidoController::class,'editpago'])->name('pedido.pago');
+Route::get('pedido/{id}/confirmar', [PedidoController::class, 'confirmar'])->name('pedido.confirmar');
+Route::get('pedido/{id}/create2', [PedidoController::class, 'create2'])->name('pedido.create2');
+Route::get('pedido/{id}/pago', [PedidoController::class, 'editpago'])->name('pedido.pago');
 
-Route::get('pedido/{id}/actualizar',[PedidoController::class,'actualizarpedido'])->name('pedido.actualizar');
+Route::get('pedido/{id}/actualizar', [PedidoController::class, 'actualizarpedido'])->name('pedido.actualizar');
 
-Route::put('pedido/store2/{id}',[PedidoController::class,'store2'])->name('pedido.store2');
-Route::put('pedido/update2/{id}',[PedidoController::class,'update2'])->name('pedido.update2');
+Route::put('pedido/store2/{id}', [PedidoController::class, 'store2'])->name('pedido.store2');
+Route::put('pedido/update2/{id}', [PedidoController::class, 'update2'])->name('pedido.update2');
 
 /* Detalle */
 
 Route::resource('detalle', DetalleController::class);
-Route::get('detalle/lista/{id}',[DetalleController::class,'lista'])->name('detalle.lista');
+Route::get('detalle/lista/{id}', [DetalleController::class, 'lista'])->name('detalle.lista');
 //Route::post('detalle/store2',[DetalleController::class,'store2'])->name('detalle.store2');
 //Route::get('detalle/create2/{id}',[DetalleController::class,'create2'])->name('detalle.create2');
 
 
 
-Route::get('cancelar5',function(){
-    return redirect()->route('pedido.index')->with('datos','Acción Cancelada ..!');
+Route::get('cancelar5', function () {
+    return redirect()->route('pedido.index')->with('datos', 'Acción Cancelada ..!');
 })->name('detalle.cancelar');
-Route::get('pedido/{id}/detalle/confirmar',[DetalleController::class,'confirmar'])->name('detalle.confirmar');
-Route::post('cliente/storemodel',[ClienteController::class,'storemodel'])->name('cliente.storemodel');
+Route::get('pedido/{id}/detalle/confirmar', [DetalleController::class, 'confirmar'])->name('detalle.confirmar');
+Route::post('cliente/storemodel', [ClienteController::class, 'storemodel'])->name('cliente.storemodel');
 
-Route::get('/pdf/{id}',[PDFController::class, 'generatePDF'])->name('pdfdownload');
+Route::get('/pdf/{id}', [PDFController::class, 'generatePDF'])->name('pdfdownload');
 /*--------------------------PERSONAL-------------------------*/
-Route::get('/registerPer',[Personal_RegisterController::class,'show'])->name('personal.register');
-Route::post('/registerPer',[Personal_RegisterController::class,'register'])->name('registerPer');
-Route::get('/loginPer',[Personal_LoginController::class,'show'])->name('personal.login');
-Route::get('/',[Personal_HomeController::class,'landing'])->name('landing');
-Route::post('/loginPer',[Personal_LoginController::class,'login'])->name('loginPer');
-Route::get('homePer', [Personal_HomeController::class,'index'])->name('homePer');
+Route::get('/registerPer', [Personal_RegisterController::class, 'show'])->name('personal.register');
+Route::post('/registerPer', [Personal_RegisterController::class, 'register'])->name('registerPer');
+Route::get('/loginPer', [Personal_LoginController::class, 'show'])->name('personal.login');
+Route::get('/', [Personal_HomeController::class, 'landing'])->name('landing');
+Route::post('/loginPer', [Personal_LoginController::class, 'login'])->name('loginPer');
+Route::get('homePer', [Personal_HomeController::class, 'index'])->name('homePer');
 Route::resource('personal', PostulanteController::class);
 
 Route::get('/personal/create', [PostulanteController::class, 'create'])->name('personal.create');
 Route::post('/personal', [PostulanteController::class, 'store'])->name('personal.store');
 Route::get('cancelar', function () {
- return redirect()->route('personal.index')->with('datos','Acción Cancelada ..!');
+    return redirect()->route('personal.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar');
 
 /*---------------------------TRANSPORTE Y DISTRIBUCION-------------------------*/
 
-Route::get('/registerTr',[Transporte_RegisterController::class,'show'])->name('transporte.register');
-Route::post('/registerT',[Transporte_RegisterController::class,'register'])->name('registerT');
-Route::get('/loginTr',[Transporte_LoginController::class,'show'])->name('transporte.login');
-Route::get('/',[Transporte_HomeController::class,'landing'])->name('landing');
-Route::post('/loginT',[Transporte_LoginController::class,'login'])->name('loginT');
-Route::get('homeT', [Transporte_HomeController::class,'index'])->name('homeT');
-Route::get('/logout',[Transporte_LogoutController::class,'logout'])->name('logoutT');
+Route::get('/registerTr', [Transporte_RegisterController::class, 'show'])->name('transporte.register');
+Route::post('/registerT', [Transporte_RegisterController::class, 'register'])->name('registerT');
+Route::get('/loginTr', [Transporte_LoginController::class, 'show'])->name('transporte.login');
+Route::get('/', [Transporte_HomeController::class, 'landing'])->name('landing');
+Route::post('/loginT', [Transporte_LoginController::class, 'login'])->name('loginT');
+Route::get('homeT', [Transporte_HomeController::class, 'index'])->name('homeT');
+Route::get('/logout', [Transporte_LogoutController::class, 'logout'])->name('logoutT');
 //REPARTIDOR
-Route::resource('repartidor',Transporte_RepartidorController::class);
-Route::get('cancelarR',function(){
-    return redirect()->route('repartidor.index')->with('datos','Acción Cancelada ..!');
+Route::resource('repartidor', Transporte_RepartidorController::class);
+Route::get('cancelarR', function () {
+    return redirect()->route('repartidor.index')->with('datos', 'Acción Cancelada ..!');
 })->name('repartidor.cancelar');
-Route::get('repartidor/{id}/confirmar',[Transporte_RepartidorController::class,'confirmar'])->name('repartidor.confirmar');
+Route::get('repartidor/{id}/confirmar', [Transporte_RepartidorController::class, 'confirmar'])->name('repartidor.confirmar');
 
 //CLIENTE
-Route::resource('clienteT',Transporte_ClienteController::class);
-Route::get('cancelarC',function(){
-    return redirect()->route('clienteT.index')->with('datos','Acción Cancelada ..!');
+Route::resource('clienteT', Transporte_ClienteController::class);
+Route::get('cancelarC', function () {
+    return redirect()->route('clienteT.index')->with('datos', 'Acción Cancelada ..!');
 })->name('clienteT.cancelar');
-Route::get('clienteT/{id}/confirmar',[Transporte_ClienteController::class,'confirmar'])->name('clienteT.confirmar');
+Route::get('clienteT/{id}/confirmar', [Transporte_ClienteController::class, 'confirmar'])->name('clienteT.confirmar');
 
 //PRODUCTO
-Route::resource('productoT',Transporte_ProductoController::class);
-Route::get('cancelarP',function(){
-    return redirect()->route('productoT.index')->with('datos','Acción Cancelada ..!');
+Route::resource('productoT', Transporte_ProductoController::class);
+Route::get('cancelarP', function () {
+    return redirect()->route('productoT.index')->with('datos', 'Acción Cancelada ..!');
 })->name('productoT.cancelar');
-Route::get('productoT/{id}/confirmar',[Transporte_ProductoController::class,'confirmar'])->name('productoT.confirmar');
+Route::get('productoT/{id}/confirmar', [Transporte_ProductoController::class, 'confirmar'])->name('productoT.confirmar');
 
 //PEDIDO
-Route::resource('pedidoT',Transporte_PedidoController::class);
-Route::get('cancelarPe',function(){
-    return redirect()->route('pedidoT.index')->with('datos','Acción Cancelada ..!');
+Route::resource('pedidoT', Transporte_PedidoController::class);
+Route::get('cancelarPe', function () {
+    return redirect()->route('pedidoT.index')->with('datos', 'Acción Cancelada ..!');
 })->name('pedidoT.cancelar');
-Route::get('pedidoT/{id}/confirmar',[Transporte_PedidoController::class,'confirmar'])->name('pedidoT.confirmar');
+Route::get('pedidoT/{id}/confirmar', [Transporte_PedidoController::class, 'confirmar'])->name('pedidoT.confirmar');
 
 //DETALLE PEDIDO
-Route::resource('detalleT',Transporte_DetallePedidoController::class);
-Route::get('cancelarDeP',function(){
-    return redirect()->route('detalleT.index')->with('datos','Acción Cancelada ..!');
+Route::resource('detalleT', Transporte_DetallePedidoController::class);
+Route::get('cancelarDeP', function () {
+    return redirect()->route('detalleT.index')->with('datos', 'Acción Cancelada ..!');
 })->name('detalleT.cancelar');
-Route::get('detalleT/{id}/confirmar',[Transporte_DetallePedidoController::class,'confirmar'])->name('detalleT.confirmar');
+Route::get('detalleT/{id}/confirmar', [Transporte_DetallePedidoController::class, 'confirmar'])->name('detalleT.confirmar');
 
 //REPORTE
 Route::get('/reporte-clientes', [Transporte_ReporteController::class, 'generarReportePDFCliente'])->name('reporte.clientesT');
@@ -178,22 +183,34 @@ Route::get('/reporte-Pedidos', [Transporte_ReporteController::class, 'generarRep
 Route::get('/reporte-Pedidos-Enviados', [Transporte_ReporteController::class, 'generarReportePDFPedidoDetalle'])->name('reporte.pedidosDetalleT');
 
 //-----------------------------ALMACEN-----------------------------------------
-Route::get('/loginAlm',[Almacen_LoginController::class,'show'])->name('almacen.login');
-Route::post('/loginA',[Almacen_LoginController::class,'login'])->name('loginA');
-Route::get('homeA', [Almacen_HomeController::class,'index'])->name('homeA');
-Route::get('/registerAlm',[Almacen_RegisterController::class,'show'])->name('almacen.register');
-Route::post('/registerA',[Almacen_RegisterController::class,'register'])->name('registerA');
+Route::get('/loginAlm', [Almacen_LoginController::class, 'show'])->name('almacen.login');
+Route::post('/loginA', [Almacen_LoginController::class, 'login'])->name('loginA');
+Route::get('homeA', [Almacen_HomeController::class, 'index'])->name('homeA');
+Route::get('/registerAlm', [Almacen_RegisterController::class, 'show'])->name('almacen.register');
+Route::post('/registerA', [Almacen_RegisterController::class, 'register'])->name('registerA');
 
-Route::resource('insumoA',Almacen_InsumoController::class);
-Route::get('cancelarI',function(){
-    return redirect()->route('insumoA.index')->with('datos','Acción Cancelada ..!');
+Route::resource('insumoA', Almacen_InsumoController::class);
+Route::get('cancelarI', function () {
+    return redirect()->route('insumoA.index')->with('datos', 'Acción Cancelada ..!');
 })->name('insumoA.cancelar');
-Route::get('insumoA/{id}/confirmar',[Almacen_InsumoController::class,'confirmar'])->name('insumoA.confirmar');
+Route::get('insumoA/{id}/confirmar', [Almacen_InsumoController::class, 'confirmar'])->name('insumoA.confirmar');
 
-Route::resource('productoA',Almacen_ProductoController::class);
-Route::get('cancelarPA',function(){
-    return redirect()->route('productoA.index')->with('datos','Acción Cancelada ..!');
+Route::resource('productoA', Almacen_ProductoController::class);
+Route::get('cancelarPA', function () {
+    return redirect()->route('productoA.index')->with('datos', 'Acción Cancelada ..!');
 })->name('productoA.cancelar');
-Route::get('productoA/{id}/confirmar',[Almacen_ProductoController::class,'confirmar'])->name('productoA.confirmar');
+Route::get('productoA/{id}/confirmar', [Almacen_ProductoController::class, 'confirmar'])->name('productoA.confirmar');
 Route::get('/reporte-insumos', [Almacen_ReporteController::class, 'generarReportePDFInsumo'])->name('reporte.InsumosA');
 Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.ProductosA');
+
+
+/*--------------------------- COMPRAS -------------------------*/
+Route::get('login-compras', [Compras_LoginController::class, 'show'])->name('compras.login.show');
+Route::post('login-compras', [Compras_LoginController::class, 'login'])->name('compras.login');
+Route::get('home-compras', [Compras_HomeController::class, 'index'])->name('compras.home');
+Route::get('register-compras', [ComprasController::class, 'create'])->name('compras.register.show');
+Route::post('register-compras', [ComprasController::class, 'store'])->name('compras.register');
+Route::post('register-compras', [ComprasController::class, 'store'])->name('compras.register');
+Route::get('/reporte-compras/{id}', [ComprasController::class, 'generarReportePDFCompra'])->name('reportes.compra');
+Route::get('/compras-reportes', [ComprasController::class, 'reportes'])->name('compras.reporte');
+Route::resource('compras', ComprasController::class);
