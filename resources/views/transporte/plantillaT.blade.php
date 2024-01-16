@@ -34,6 +34,14 @@
                     <a href="{{ route('homeT') }}" class="nav-link">Home</a>
                 </li>
             </ul>
+            <!-- En tu archivo de la plantilla (por ejemplo, resources/views/transporte/plantillaT.blade.php) -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Otros elementos de la barra de navegación -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mostrarDA') }}">Dashboard</a>
+                </li>
+            </ul>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
 use App\Models\Transporte_Cliente;
 use App\Models\Transporte_Pedido;
 use App\Models\Transporte_Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use ConsoleTVs\Charts\Facades\Charts;
 class Transporte_PedidoController extends Controller
 {
     const PAGINATION = 8;
@@ -133,5 +134,34 @@ class Transporte_PedidoController extends Controller
         $pedidoT->estado = 0;
         $pedidoT->save();
         return redirect()->route('pedidoT.index')->with('datos', 'Registro eliminado...');
+    }
+
+    public function dashboard()
+    {
+        // Obtener datos estadísticos (puedes personalizar esto según tus necesidades)
+        $pedidosPorCliente = Pedido::select('idCliente', DB::raw('count(*) as total'))
+            ->groupBy('idCliente')
+            ->pluck('total', 'idCliente');
+
+        // Crear gráfico de barras
+        $barChart = Charts::database($pedidosPorCliente, 'bar', 'highcharts')
+            ->title('Pedidos por Cliente')
+            ->elementLabel('Total Pedidos')
+            ->dimensions(500, 300)
+            ->responsive(true);
+
+        // Crear gráfico de tarta
+        $modosDePago = Pedido::select('modoPago', DB::raw('count(*) as total'))
+            ->groupBy('modoPago')
+            ->pluck('total', 'modoPago');
+
+        $pieChart = Charts::create('pie', 'highcharts')
+            ->title('Porcentaje de Modos de Pago')
+            ->labels($modosDePago->keys())
+            ->values($modosDePago->values())
+            ->dimensions(500, 300)
+            ->responsive(true);
+
+        return view('transporte.dashboard', compact('barChart', 'pieChart'));
     }
 }

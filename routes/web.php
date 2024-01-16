@@ -176,6 +176,7 @@ Route::get('/reporte-Repartidores', [Transporte_ReporteController::class, 'gener
 // Route::get('/reporte-Productos', [Transporte_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.productosT');
 Route::get('/reporte-Pedidos', [Transporte_ReporteController::class, 'generarReportePDFPedido'])->name('reporte.pedidosT');
 Route::get('/reporte-Pedidos-Enviados', [Transporte_ReporteController::class, 'generarReportePDFPedidoDetalle'])->name('reporte.pedidosDetalleT');
+Route::get('/dashboard', [Transporte_PedidoController::class, 'dashboard'])->name('mostrarDA');
 
 //-----------------------------ALMACEN-----------------------------------------
 Route::get('/loginAlm',[Almacen_LoginController::class,'show'])->name('almacen.login');
