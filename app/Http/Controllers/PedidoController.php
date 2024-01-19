@@ -62,16 +62,18 @@ class PedidoController extends Controller
         $pedido->estado = '1';
         $pedido->save();
 
-        for ($i = 0; $i < count($request->idproductos); $i++) {
-            $pedido_detalle = new PedidoDetalle();
-            $pedido_detalle->idpedido = $pedido->idpedido;
-            $pedido_detalle->idproducto = $request->idproductos[$i];
-            $pedido_detalle->cantidad = $request->cantidadproductos[$i];
-            $pedido_detalle->precio = $request->preciosproductos[$i];
-            $pedido_detalle->importe = $request->preciosproductos[$i] * $request->cantidadproductos[$i];
-            $pedido_detalle->save();
+        if (!empty($request->idproductos) && is_array($request->idproductos)) {
+            for ($i = 0; $i < count($request->idproductos); $i++) {
+                $pedido_detalle = new PedidoDetalle();
+                $pedido_detalle->idpedido = $pedido->idpedido;
+                $pedido_detalle->idproducto = $request->idproductos[$i];
+                $pedido_detalle->cantidad = $request->cantidadproductos[$i];
+                $pedido_detalle->precio = $request->preciosproductos[$i];
+                $pedido_detalle->importe = $request->preciosproductos[$i] * $request->cantidadproductos[$i];
+                $pedido_detalle->save();
 
-            DB::table('pedido')->where('idpedido', $pedido->idpedido)->increment('montoTotal', $request->preciosproductos[$i] * $request->cantidadproductos[$i]);
+                DB::table('pedido')->where('idpedido', $pedido->idpedido)->increment('montoTotal', $request->preciosproductos[$i] * $request->cantidadproductos[$i]);
+            }
         }
 
         return redirect()->route('pedido.index')->with('datos', 'Pedido Nuevo Guardado ...!');

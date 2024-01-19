@@ -72,8 +72,8 @@
 
 
                     <div class="d-flex">
-                        <button type="submit" class="btn btn-primary me-2" id="btnSubmit"><i class="fas fa-save"></i>
-                            Grabar</button>
+                        {{-- <button type="submit" class="btn btn-primary me-2" id="btnSubmit"><i class="fas fa-save"></i>
+                            Grabar</button> --}}
                         <a href="{{ route('pedido.cancelar') }}" class="btn btn-danger"><i class="fas fa-ban"></i>
                             Cancelar</a>
                     </div>
