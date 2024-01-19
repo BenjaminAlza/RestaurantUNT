@@ -29,6 +29,10 @@ use App\Http\Controllers\Compras_HomeController;
 use App\Http\Controllers\Compras_LoginController;
 use App\Http\Controllers\Compras_RegisterController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\Marketing_HomeController;
+use App\Http\Controllers\Marketing_LoginController;
+use App\Http\Controllers\Marketing_RegisterController;
+use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\Transporte_ClienteController;
 use App\Http\Controllers\Transporte_DetallePedidoController;
 use App\Http\Controllers\Transporte_LogoutController;
@@ -214,4 +218,13 @@ Route::post('register-compras', [ComprasController::class, 'store'])->name('comp
 Route::post('register-compras', [ComprasController::class, 'store'])->name('compras.register');
 Route::get('/reporte-compras/{id}', [ComprasController::class, 'generarReportePDFCompra'])->name('reportes.compra');
 Route::get('/compras-reportes', [ComprasController::class, 'reportes'])->name('compras.reporte');
-Route::resource('compras', ComprasController::class);
+Route::resource('compras', MarketingController::class);
+
+
+/*--------------------------- MARKTING -------------------------*/
+Route::get('registro-marketing', [Marketing_RegisterController::class, 'show'])->name('marketing.register.show');
+Route::post('registro-marketing', [Marketing_RegisterController::class, 'register'])->name('marketing.register');
+Route::get('login-marketing', [Marketing_LoginController::class, 'show'])->name('marketing.login.show');
+Route::post('login-marketing', [Marketing_LoginController::class, 'login'])->name('marketing.login');
+Route::get('home-marketing', [Marketing_HomeController::class, 'index'])->name('marketing.home');
+Route::resource('marketing', MarketingController::class);

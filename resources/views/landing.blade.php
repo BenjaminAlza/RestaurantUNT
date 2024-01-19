@@ -38,6 +38,8 @@
                        <a class="dropdown-item" href="{{ route('compras.login') }}">Subsistema de Compras</a>
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item" href="{{route('personal.login')}}">Subsistema de Personal</a>
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="{{route('marketing.login')}}">Subsistema de Marketing</a>
                    </div>
                   </li>
                 </ul>

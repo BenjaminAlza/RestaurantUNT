@@ -714,3 +714,21 @@ CREATE TABLE detalle_compra(
     FOREIGN KEY (compra_id) REFERENCES compras(id) ON DELETE CASCADE,
     FOREIGN KEY (producto_id) REFERENCES producto(idproducto)
 );
+
+CREATE TABLE IF NOT EXISTS coupones (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  coupon_code varchar(255) NOT NULL,
+  coupon_value int(11) NOT NULL,
+  primary key(id)
+);
+
+--
+-- Volcado de datos para la tabla `coupon_detail`
+--
+
+INSERT INTO `coupones` (`id`, `coupon_code`, `coupon_value`) VALUES
+(1, 'GET10', 10),
+(2, 'GET20', 20),
+(3, 'GET30', 30),
+(4, 'GET40', 40),
+(5, 'GET50', 50);
