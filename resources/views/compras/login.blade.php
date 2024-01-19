@@ -31,7 +31,7 @@
             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3" align="center">
-            <a href="{{route('compras.register.show')}}">
+            <a href="{{route('compras.registro.show')}}">
                 <button type="button" class="btn btn-success">
                     Crear cuenta
                 </button>

@@ -20,8 +20,9 @@ class Compras_RegisterController extends Controller
     }
     public function register(RegisterRequest $request)
     {
-        User::create($request->validated());
+        $user = User::create($request->validated());
+        Auth::login($user);
 
-        return redirect()->route('compras.login.show')->with('success', "Account successfully registered.");
+        return redirect()->route('compras.home')->with('success', "Account successfully registered.");
     }
 }

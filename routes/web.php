@@ -210,8 +210,8 @@ Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarRepo
 
 
 /*--------------------------- COMPRAS -------------------------*/
-// Route::get('registro-compras', [Compras_RegisterController::class, 'show'])->name('compras.register.show');
-// Route::post('registro-compras', [Compras_RegisterController::class, 'register'])->name('compras.register');
+Route::get('registro-compras', [Compras_RegisterController::class, 'show'])->name('compras.registro.show');
+Route::post('registro-compras', [Compras_RegisterController::class, 'register'])->name('compras.registro');
 Route::get('login-compras', [Compras_LoginController::class, 'show'])->name('compras.login.show');
 Route::post('login-compras', [Compras_LoginController::class, 'login'])->name('compras.login');
 Route::get('home-compras', [Compras_HomeController::class, 'index'])->name('compras.home');

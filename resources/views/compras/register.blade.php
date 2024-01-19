@@ -8,7 +8,7 @@
         background-size: cover;
         }
     </style>
-    <form action="{{route('compras.register')}}" method="POST" style="text-align: center">
+    <form action="{{route('compras.registro')}}" method="POST" style="text-align: center">
         @csrf
         <h2>CREAR CUENTA</h2>
         @include('layout.mensaje')
