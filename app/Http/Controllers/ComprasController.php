@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Compra;
 use App\Models\CompraDetalle;
+use App\Models\CompraInsumo;
 use App\Models\CompraProducto;
 use App\Models\Producto;
 use App\Models\Proveedor;
@@ -33,7 +34,8 @@ class ComprasController extends Controller
     {
         $proveedores = Proveedor::all();
         $productos = CompraProducto::where('estado', '=', '1')->get();
-        return view('compras.create', compact('proveedores', 'productos'));
+        $insumos = CompraInsumo::where('estado', '=', '1')->get();
+        return view('compras.create', compact('proveedores', 'productos', 'insumos'));
     }
 
     public function store(Request $request)
@@ -72,16 +74,19 @@ class ComprasController extends Controller
                     'total' => $cantidades[$i] * $precios[$i],
                     'impuesto' => $cantidades[$i] * $precios[$i] * 0.18
                 ]);
+
+                DB::table('insumo')->where('idInsumo', $ids[$i])->increment('stockIn', $cantidades[$i]);
             }
         }
 
         if ($new_codigos != null) {
             for ($i = 0; $i < count($new_codigos); $i++) {
 
-                $new_articulo = new Producto();
-                $new_articulo->descripcion = $new_nombres[$i];
-                $new_articulo->precio = $new_precios[$i];
-                $new_articulo->estado = 4;
+                $new_articulo = new CompraInsumo();
+                $new_articulo->nombreIn = $new_nombres[$i];
+                $new_articulo->precioIn = $new_precios[$i];
+                $new_articulo->stockIn = $new_cantidades[$i];
+                $new_articulo->estado = 1;
                 $new_articulo->save();
 
                 $detalle_c = new CompraDetalle();
@@ -106,9 +111,9 @@ class ComprasController extends Controller
         $date = new DateTime();
         $date = $date->format("d/m/Y");
         $compra_details = DB::table('detalle_compra as dc')
-            ->join('producto as p', 'p.idproducto', 'dc.producto_id')
+            ->join('insumo as i', 'i.idInsumo', 'dc.producto_id')
             ->where('dc.compra_id', $id)
-            ->select('dc.id', 'dc.cantidad as quantity', 'p.descripcion as name', 'p.idproducto as id', DB::raw('dc.cantidad * dc.precio as totalprice'), 'dc.estado')
+            ->select('dc.id', 'dc.cantidad as quantity', 'i.nombreIn as name', 'i.idInsumo as id', DB::raw('dc.cantidad * dc.precio as totalprice'), 'dc.estado')
             ->get();
 
         $compra = Compra::findOrFail($id);
@@ -136,9 +141,9 @@ class ComprasController extends Controller
         $date = new DateTime();
         $date = $date->format("d/m/Y");
         $compra_details = DB::table('detalle_compra as dc')
-            ->join('producto as p', 'p.idproducto', 'dc.producto_id')
+            ->join('insumo as i', 'i.idInsumo', 'dc.producto_id')
             ->where('dc.compra_id', $id)
-            ->select('dc.id', 'dc.cantidad as quantity', 'p.descripcion as name', 'p.idproducto as id', DB::raw('dc.cantidad * dc.precio as totalprice'), 'dc.estado')
+            ->select('dc.id', 'dc.cantidad as quantity', 'i.nombreIn as name', 'i.idInsumo as id', DB::raw('dc.cantidad * dc.precio as totalprice'), 'dc.estado')
             ->get();
 
         $compra = Compra::findOrFail($id);

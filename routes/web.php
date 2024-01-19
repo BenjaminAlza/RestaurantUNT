@@ -210,6 +210,8 @@ Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarRepo
 
 
 /*--------------------------- COMPRAS -------------------------*/
+// Route::get('registro-compras', [Compras_RegisterController::class, 'show'])->name('compras.register.show');
+// Route::post('registro-compras', [Compras_RegisterController::class, 'register'])->name('compras.register');
 Route::get('login-compras', [Compras_LoginController::class, 'show'])->name('compras.login.show');
 Route::post('login-compras', [Compras_LoginController::class, 'login'])->name('compras.login');
 Route::get('home-compras', [Compras_HomeController::class, 'index'])->name('compras.home');
@@ -218,7 +220,7 @@ Route::post('register-compras', [ComprasController::class, 'store'])->name('comp
 Route::post('register-compras', [ComprasController::class, 'store'])->name('compras.register');
 Route::get('/reporte-compras/{id}', [ComprasController::class, 'generarReportePDFCompra'])->name('reportes.compra');
 Route::get('/compras-reportes', [ComprasController::class, 'reportes'])->name('compras.reporte');
-Route::resource('compras', MarketingController::class);
+Route::resource('compras', ComprasController::class);
 
 
 /*--------------------------- MARKTING -------------------------*/
