@@ -98,8 +98,9 @@ CREATE TABLE `detalle_pedido` (
   `idpedido` int(11) NOT NULL,
   `idproducto` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `precio` float DEFAULT NULL
-  `importe` float DEFAULT NULL
+  `precio` float DEFAULT NULL,
+  `importe` float DEFAULT NULL,
+  PRIMARY KEY(idpedido, idproducto)
 );
 
 -- --------------------------------------------------------

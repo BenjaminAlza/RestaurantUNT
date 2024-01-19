@@ -9,6 +9,7 @@ use App\Models\Detalle;
 use App\Models\PedidoDetalle;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PedidoController extends Controller
 {
@@ -54,7 +55,7 @@ class PedidoController extends Controller
             $pedido->situacion = '0';
             $pedido->idcliente = null;
         }
-        $pedido->montoTotal = $request->montoToatl;
+        $pedido->montoTotal = 0;
         $pedido->observaciones = $request->observaciones;
         $pedido->medioPago = $request->medioPago;
         $pedido->modalidad = $request->modalidad;
@@ -69,6 +70,8 @@ class PedidoController extends Controller
             $pedido_detalle->precio = $request->preciosproductos[$i];
             $pedido_detalle->importe = $request->preciosproductos[$i] * $request->cantidadproductos[$i];
             $pedido_detalle->save();
+
+            DB::table('pedido')->where('idpedido', $pedido->idpedido)->increment('montoTotal', $request->preciosproductos[$i] * $request->cantidadproductos[$i]);
         }
 
         return redirect()->route('pedido.index')->with('datos', 'Pedido Nuevo Guardado ...!');
