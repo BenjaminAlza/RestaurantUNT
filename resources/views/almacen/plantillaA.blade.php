@@ -165,7 +165,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        
+
                         @endif
 
 
@@ -185,9 +185,9 @@
                                             <p>Ver Pedidos</p>
                                         </a>
                                     </li>
-                                
+
                                 </ul>
-                            </li>   
+                            </li>
                         @endif
 
                         <!-- Cerrar sesión -->
@@ -244,7 +244,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+
     <!-- Script javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">

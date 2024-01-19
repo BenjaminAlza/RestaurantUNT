@@ -81,7 +81,7 @@ CREATE TABLE `detallepedido` (
   `idDetalleP` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL,
   `idPedido` int(11) NOT NULL,
-  `idRepartidor` int(11) NOT NULL,
+  `idRepartidor` int(11) NULL,
   `fechaPedido` date NOT NULL,
   `modoPago` varchar(30) NOT NULL,
   `totalPagar` float NOT NULL,
@@ -98,8 +98,9 @@ CREATE TABLE `detalle_pedido` (
   `idpedido` int(11) NOT NULL,
   `idproducto` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `precio` decimal(8,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `precio` float DEFAULT NULL
+  `importe` float DEFAULT NULL
+);
 
 -- --------------------------------------------------------
 
