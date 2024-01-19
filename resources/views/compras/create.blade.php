@@ -53,14 +53,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="products">Agregar Productos</label>
+                                <label for="products">Agregar Insumos</label>
                                 <select name="idarticulo" id="select-idarticulo" class="form-control"
                                     onchange="addProductOrder();">
-                                    <option value="">Producto nuevo</option>
-                                    @foreach ($productos as $producto)
+                                    <option value="">Insumo nuevo</option>
+                                    @foreach ($insumos as $insumo)
                                         <option
-                                            value="{{ $producto->idproducto }}_{{ $producto->descripcion }}_{{ $producto->precio }}">
-                                            {{ $producto->descripcion }}</option>
+                                            value="{{ $insumo->idInsumo }}_{{ $insumo->nombreIn }}_{{ $insumo->precioIn }}">
+                                            {{ $insumo->nombreIn }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-7">
                     <div class="card">
-                        <div class="card-header">Productos</div>
+                        <div class="card-header">Insumos</div>
                         <div class="card-body">
                             <table id="product_detail" class="table">
                                 <thead>
