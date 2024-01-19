@@ -20,6 +20,7 @@ class Marketing_RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $user = User::create($request->validated());
+        Auth::login($user);
         return redirect()->route('marketing.home')->with('success', "Account successfully registered.");
     }
 }
