@@ -65,9 +65,11 @@
                             <td>{{ $itemproductoA->precio }}</td>
                             <td>{{ $itemproductoA->stock }}</td>
                             <td>
+                                <a href="{{ route('productoA.vreducirInsumo', $itemproductoA->idProducto) }}"
+                                    class="btn btn-warning btn-sm"><i class="fas fa-green"></i>Insumos</a>
                                 <a href="{{ route('productoA.edit', $itemproductoA->idProducto) }}"
                                     class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                                <a href="{{ route('productoT.confirmar', $itemproductoA->idProducto) }}"
+                                <a href="{{ route('productoA.confirmar', $itemproductoA->idProducto) }}"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
                             </td>
                         </tr>

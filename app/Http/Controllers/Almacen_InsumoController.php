@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Almacen_Insumo;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class Almacen_InsumoController extends Controller
@@ -12,7 +13,7 @@ class Almacen_InsumoController extends Controller
     public function index(Request $request)
     {
         //
-        $buscarIn=$request->get('buscarporD');
+        $buscarIn=$request->get('buscarIn');
         $insumoAlm=Almacen_Insumo::where('estado','=','1')->where('nombreIn','like','%'.$buscarIn.'%')->paginate($this::PAGINATION);
        
         return view('almacen.insumo.index',compact('insumoAlm','buscarIn'));
@@ -23,6 +24,7 @@ class Almacen_InsumoController extends Controller
     public function create()
     {
         //
+      
         return view('almacen.insumo.create');
     }
 

@@ -208,6 +208,9 @@ Route::get('productoA/{id}/confirmar', [Almacen_ProductoController::class, 'conf
 Route::get('/reporte-insumos', [Almacen_ReporteController::class, 'generarReportePDFInsumo'])->name('reporte.InsumosA');
 Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarReportePDFProducto'])->name('reporte.ProductosA');
 
+Route::get('productoA/{id}/insumos', [Almacen_ProductoController::class, 'VistaReducirStock'])->name('productoA.vreducirInsumo');
+Route::post('reducirIn/{id}/', [Almacen_ProductoController::class, 'reducirInsumo'])->name('productoA.reducirInsumo');
+
 
 /*--------------------------- COMPRAS -------------------------*/
 Route::get('registro-compras', [Compras_RegisterController::class, 'show'])->name('compras.registro.show');

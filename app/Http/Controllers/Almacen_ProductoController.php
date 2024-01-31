@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Transporte_Producto;
 use Illuminate\Http\Request;
-
+use App\Models\Almacen_Insumo;
+use App\Http\Controllers\Almacen_InsumoController;
 class Almacen_ProductoController extends Controller
 {
     const PAGINATION = 8;
@@ -19,11 +20,42 @@ class Almacen_ProductoController extends Controller
         return view('almacen.producto.index',compact('productoA','buscarPr'));
     }
 
-    
+    public function VistaReducirStock ( $id){
+     
+        $insumos= Almacen_Insumo::where('estado','=',1)->get();
+        $productoA=Transporte_Producto::findOrFail($id);
+        return view('almacen.producto.reducirInsumo',compact('insumos','productoA'));
+       
+    }
+
+    public function reducirInsumo (Request $request, $id){
+        $data=request()->validate([
+        
+            'stockIn' => 'required|min:0'
+        ],
+        [
+           
+            'stockIn.required' => 'Ingrese la cantidad a reducir',
+            'stockIn.min' => 'Ingrese valor positivo',
+        ]);
+        $productoA=Transporte_Producto::findOrFail($id);
+        $insumo = Almacen_Insumo::findOrFail($request->idInsumo);
+       if ($insumo->stockIn >$request->stockIn){
+        $insumo->update(['stockIn' => max(0, $insumo->stockIn - $request->stockIn)]);
+        $insumo->save();
+        return redirect()->route('productoA.index')->with('datos','Producto Actualizado ...!');
+       }else{
+       
+        return redirect()->route('productoA.index')->with('datos','Stock insuficiente ...!');
+       }
+
+   
+       
+    }
 
     public function create()
     {
-        //
+      
         return view('almacen.producto.create');
     }
 
@@ -50,7 +82,8 @@ class Almacen_ProductoController extends Controller
         $productoA->estado = '1';
         $productoA->save();
         return redirect()->route('productoA.index')->with('datos','Producto Nuevo Guardado ...!');
-
+       
+       // return redirect()->route ('productoA.reducirInsumo', compact('productoA'));
     }
 
     /**

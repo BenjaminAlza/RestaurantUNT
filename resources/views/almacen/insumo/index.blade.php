@@ -10,14 +10,14 @@
         <div class="row">
             <!-- Botón Nuevo -->
             <div class="col-md-4 text-md-left mb-3 mb-md-0">
-                <a href="{{ route('insumoA.create') }}" class="btn btn-warning"><i class="fas fa-user"></i> Nuevo Producto</a>
+                <a href="{{ route('insumoA.create') }}" class="btn btn-warning"><i class="fas fa-user"></i> Nuevo Insumo</a>
             </div>
 
             <!-- Búsqueda por descripción -->
             <div class="col-md-4 text-md-center mb-3 mb-md-0">
                 <form class="form-inline" method="GET">
                     <div class="input-group">
-                        <input name="buscarIn" class="form-control" type="search" placeholder="Búsqueda por descripción" value="{{ $buscarIn }}">
+                        <input name="buscarIn" class="form-control" type="search" placeholder="Búsqueda por nombre" value="{{ $buscarIn }}">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit">Buscar</button>
                         </div>

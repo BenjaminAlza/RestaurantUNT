@@ -63,7 +63,7 @@
                             <label for="lote" class="control-label">Lote:</label>
                             <div class="input-group">
                               
-                                <input class="form-control @error('lote') is-invalid @enderror"  value="{{$insumoAlm->lote}} " type="number" id="lote" name="lote" min="0" required />
+                                <input class="form-control @error('lote') is-invalid @enderror"  value="{{$insumoAlm->lote}} " type="text" id="lote" name="lote" min="0" required />
                             </div>
                             <!-- Mensaje posible de error -->
                             @error('lote')
@@ -77,9 +77,9 @@
                             <label for="stock" class="control-label">Stock:</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">S/.</span>
+                                    <span class="input-group-text">N° </span>
                                 </div>
-                                <input class="form-control @error('stockIn') is-invalid @enderror" value="{{$insumoAlm->stockIn}} " type="number" id="stockIn" name="stockIn" min="0" required />
+                                <input class="form-control @error('stockIn') is-invalid @enderror" value="{{$insumoAlm->stockIn}} " type="text" id="stockIn" name="stockIn" min="0" required />
                             </div>
                             <!-- Mensaje posible de error -->
                             @error('stockIn')
