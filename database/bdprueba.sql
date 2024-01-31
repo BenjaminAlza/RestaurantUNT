@@ -99,8 +99,8 @@ CREATE TABLE `detalle_pedido` (
   `idproducto` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `precio` float DEFAULT NULL,
-  `importe` float DEFAULT NULL,
-  PRIMARY KEY(idpedido, idproducto)
+  `importe` float DEFAULT NULL
+ 
 );
 
 -- --------------------------------------------------------
@@ -336,7 +336,7 @@ CREATE TABLE `repartidor` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(20) UNSIGNED NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `rol` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
@@ -383,6 +383,14 @@ CREATE TABLE `usuario` (
 ALTER TABLE `administrador`
   ADD PRIMARY KEY (`dni`);
 
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
 --
 -- Indices de la tabla `cliente`
 --
@@ -502,13 +510,7 @@ ALTER TABLE `productodelivery`
 ALTER TABLE `repartidor`
   ADD PRIMARY KEY (`idRepartidor`);
 
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD UNIQUE KEY `users_username_unique` (`username`);
+
 
 --
 -- Indices de la tabla `usuario`

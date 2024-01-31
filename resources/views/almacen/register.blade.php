@@ -41,7 +41,7 @@
             <input type="password" placeholder="password-confirmation" name="password_confirmation"  class="form-control" id="exampleInputPassword1">
             <label for="exampleInputPassword1" class="form-label">Password-confirmation</label>
         </div>
-        <div style="align-content: center"">
+        <div style="align-content: center">
             <a href="{{route('almacen.login')}}">
                 <button type="button" class="btn btn-success">
                     Iniciar sesion
