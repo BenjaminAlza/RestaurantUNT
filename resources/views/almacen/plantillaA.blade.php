@@ -17,6 +17,44 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+                .cuadrito-color {
+                    width: 50px;
+                    height: 10px;
+                    display: inline-block;
+                    margin-left: 10px; /* Ajusta el espacio entre el stock y el cuadrito */
+
+                    
+        }
+                .insumo-line {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centra el contenido horizontalmente */
+            margin-bottom: 10px; /* Ajusta según sea necesario */
+        }
+
+        .insumo-nombre,
+    .stock-alert{
+        flex: 1; /* Hace que cada elemento ocupe el mismo espacio en la fila */
+    }
+        
+        .cuadrito-rojo {
+            background-color: red;
+        
+        }
+
+        .cuadrito-amarillo {
+            background-color: orange;
+        }
+
+        .cuadrito-verde {
+            background-color: green;
+        }
+      
+      
+
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -31,7 +69,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('homeT') }}" class="nav-link">Home</a>
+                    <a href="{{ route('homeA') }}" class="nav-link">Inicio</a>
                 </li>
             </ul>
 
@@ -248,6 +286,52 @@
     <!-- Script javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready (function(){
+                $('#myModal').modal ('show')
+
+                function analizarStock(stock) {
+            if (stock <= 2) {
+                return 'rojo';
+            } else if (stock <= 40) {
+                return 'amarillo';
+            } else {
+                return 'verde';
+            }
+        }
+
+
+        function actualizarEstados() {
+            $('.cuadrito-color').remove();
+            $('.stock-alert').each(function() {
+                var stock = parseInt($(this).text(), 10);
+                var color = analizarStock(stock);
+
+                // Agregar clase de color al elemento que muestra el stock
+                $(this).addClass('stock-' + color);
+
+                // Agregar cuadrito de color al lado del elemento
+                var cuadritoColor = $('<div class="cuadrito-color"></div>');
+                cuadritoColor.addClass('cuadrito-' + color);
+                $(this).after(cuadritoColor);
+            });
+        }
+          // Llama a la función para actualizar los estados al hacer clic en el botón
+          $('#botonAbrirModal').on('click', function() {
+            // Llama a la función para actualizar los estados antes de mostrar el modal
+            actualizarEstados();
+
+            // Muestra el modal al hacer clic en el botón
+            $('#myModal').modal('show');
+        });
+
+        // Llama a la función para actualizar los estados al cargar la vista
+        actualizarEstados();
+
+       
+        });
     </script>
     @yield('script')
 

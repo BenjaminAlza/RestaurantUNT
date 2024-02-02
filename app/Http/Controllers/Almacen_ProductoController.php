@@ -40,13 +40,14 @@ class Almacen_ProductoController extends Controller
         ]);
         $productoA=Transporte_Producto::findOrFail($id);
         $insumo = Almacen_Insumo::findOrFail($request->idInsumo);
-       if ($insumo->stockIn >$request->stockIn){
-        $insumo->update(['stockIn' => max(0, $insumo->stockIn - $request->stockIn)]);
+       if ($insumo->stockIn >=$request->stockIn){
+        
+        $insumo->update(['stockIn' => $insumo->stockIn - $request->stockIn]);
         $insumo->save();
-        return redirect()->route('productoA.index')->with('datos','Producto Actualizado ...!');
+        return redirect()->route('productoA.index')->with('datos','Stock de insumos actualizados ...!');
        }else{
        
-        return redirect()->route('productoA.index')->with('datos','Stock insuficiente ...!');
+        return redirect()->route('productoA.index')->with('datos','Stock de insumo insuficiente ...!');
        }
 
    

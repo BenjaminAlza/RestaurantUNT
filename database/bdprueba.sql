@@ -353,13 +353,32 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `rol`, `email`, `username`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'administrador', 'admin@gmail.com', 'admin@gmail.com', NULL, '$2y$10$5JwAmYcai5.HexVY617/ROKC62pbeV/nweNMQr7Sop2pouA6f1ghm', NULL, '2023-07-25 13:45:37', '2023-07-25 13:45:37');
+(1, NULL, 'administrador', 'admin@gmail.com', 'admin@gmail.com', NULL, '$2y$10$5JwAmYcai5.HexVY617/ROKC62pbeV/nweNMQr7Sop2pouA6f1ghm', NULL, '2023-07-25 13:45:37', '2023-07-25 13:45:37'),
+(2, NULL, 'Personal de almacén', 'pjuan@gmail.com', 'juan perez', NULL, '$2y$10$iJ.B09QCP.lIwkGw/DyeYe5efxZOM.7aNPFqU2NM.7gsh787QiID2', NULL, '2024-01-31 20:48:52', '2024-01-31 20:48:52');
 
 -- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `insumo`
+--
 
+INSERT INTO `insumo` (`idInsumo`, `nombreIn`, `descripcionIn`, `fechaAdquisicion`, `fechaCaducidad`, `lote`, `stockIn`, `estado`) VALUES
+(1, 'Cebolla Cola', 'Platillos criollos', '2024-01-31', '2024-02-07', '2', 110, 1),
+(2, 'PapasAndinas', 'huayro', '2024-01-31', '2024-02-07', '2', 200, 1),
+(3, 'Maracuya', 'Bebidas', '2024-02-02', '2024-02-09', '2', 200, 1),
+(4, 'Tomate Grande', 'Para ensaladas', '2024-02-02', '2024-02-06', '4', 350, 1),
+(5, 'Pollo Perla', '3.5kg c/pollo', '2024-02-02', '2024-02-05', '5', 100, 1),
+(6, 'Carne Cerdo', 'Chuletas medianas', '2024-02-09', '2024-02-16', '6', 180, 1),
+(7, 'Carne Res', 'Parrillas noche', '2024-02-03', '2024-02-08', '7', 205, 1),
+(8, 'Escabeche', 'Para platillos criollos', '2024-01-30', '2024-02-07', '7', 2, 1),
+(9, 'Cebolla china', 'Criollos y ensaladas', '2024-02-01', '2024-02-04', '7', 80, 1),
+(10, 'Pepinillo', 'Ensaladas', '2024-01-29', '2024-02-03', '7', 38, 1);
 --
 -- Estructura de tabla para la tabla `usuario`
 --
+
+INSERT INTO `productodelivery` (`idProducto`, `descripcion`, `precio`, `stock`, `estado`) VALUES
+(1, 'Cabrito', 28, 45, 1),
+(2, 'Caldo Entrada', 20, 45, 1);
 
 CREATE TABLE `usuario` (
   `dni` char(8) NOT NULL,
