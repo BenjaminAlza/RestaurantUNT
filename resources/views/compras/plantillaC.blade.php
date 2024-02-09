@@ -13,6 +13,7 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
         <!-- Theme style -->
+        
         <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -59,7 +60,6 @@
                             </form>
                         </div>
                     </li>
-
 
                     <li class="nav-item">
                         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -149,6 +149,28 @@
                                         </li>
                                     </ul>
                                 </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-envelope">
+                              
+                                        </i>
+                                        <p>
+                                            Notificaciones
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{route('compras.notificaciones.lista')}}" class="nav-link">
+                                                <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
+                                                <p>Ver Lista de notificaciones</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
                             @endif
 
                             <!-- Cerrar sesión -->
@@ -210,6 +232,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
         </script>
+     
         @yield('script')
 
     </body>

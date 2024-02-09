@@ -396,6 +396,7 @@ CREATE TABLE `usuario` (
 -- Índices para tablas volcadas
 --
 
+
 --
 -- Indices de la tabla `administrador`
 --
@@ -456,6 +457,17 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `insumo`
   ADD PRIMARY KEY (`idInsumo`);
+
+
+CREATE TABLE notificaciones_insumo (
+    idNoti INT AUTO_INCREMENT PRIMARY KEY,
+    insumo_id INT (11) not null, 
+    mensaje VARCHAR(100) NOT NULL,
+    fecha_creacion date not null,
+    hora_creacion varchar (15) not null,
+    estado int not null,
+    FOREIGN KEY (insumo_id) REFERENCES insumo(idInsumo)
+);
 
 --
 -- Indices de la tabla `mesa`

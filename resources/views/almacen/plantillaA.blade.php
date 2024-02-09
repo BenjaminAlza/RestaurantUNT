@@ -139,7 +139,7 @@
                     </div>
                     <div class="info">
                         <a href="" class="d-block"
-                            style="text-transform: uppercase;">{{ auth()->user()->rol }}:
+                            >{{ auth()->user()->rol }}: <br>
                             {{ auth()->user()->name ?? auth()->user()->username }}</a>
                     </div>
                 </div>
@@ -204,6 +204,25 @@
                                 </ul>
                             </li>
 
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-check"></i>
+                                    <p>
+                                        Notificaciones
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('notifA.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
+                                            <p>Ver Lista</p>
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+
                         @endif
 
 
@@ -229,12 +248,12 @@
                         @endif
 
                         <!-- Cerrar sesión -->
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('logoutT') }}" class="nav-link">
                                 <i class="nav-icon fas fa-door-open"></i>
                                 <p>Cerrar Sesión</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

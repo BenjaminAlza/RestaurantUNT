@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-8" align="center">
                     <!-- Button trigger modal -->
-            <button id="botonAbrirModal" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button id="botonAbrirModal" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Evaluación rápida de insumos
             </button>
 
@@ -45,8 +45,8 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-info">Postergar</button>
-                        <button type="button" class="btn btn-danger">Crear pedido</button>
+                        
+                        <a type="button" href="{{ route('notifA.create') }}"  class="btn btn-danger fas-fa-alert">Notificar</a>
                     </div>
                 </div>
             </div>

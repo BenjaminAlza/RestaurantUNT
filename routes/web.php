@@ -33,6 +33,7 @@ use App\Http\Controllers\Marketing_HomeController;
 use App\Http\Controllers\Marketing_LoginController;
 use App\Http\Controllers\Marketing_RegisterController;
 use App\Http\Controllers\MarketingController;
+use App\Http\Controllers\Notificacion_InsController;
 use App\Http\Controllers\Transporte_ClienteController;
 use App\Http\Controllers\Transporte_DetallePedidoController;
 use App\Http\Controllers\Transporte_LogoutController;
@@ -211,6 +212,11 @@ Route::get('/reporte-Productos', [Almacen_ReporteController::class, 'generarRepo
 Route::get('productoA/{id}/insumos', [Almacen_ProductoController::class, 'VistaReducirStock'])->name('productoA.vreducirInsumo');
 Route::post('reducirIn/{id}/', [Almacen_ProductoController::class, 'reducirInsumo'])->name('productoA.reducirInsumo');
 
+Route::resource('notifA', Notificacion_InsController::class);
+Route::get('cancelarNot', function () {
+    return redirect()->route('homeA')->with('datos', 'Acción Cancelada ..!');
+})->name('notifA.cancelar');
+Route::get('notifA/{id}/confirmar', [Notificacion_InsController::class, 'confirmar'])->name('notifA.confirmar');
 
 /*--------------------------- COMPRAS -------------------------*/
 Route::get('registro-compras', [Compras_RegisterController::class, 'show'])->name('compras.registro.show');
@@ -225,7 +231,13 @@ Route::get('/reporte-compras/{id}', [ComprasController::class, 'generarReportePD
 Route::get('/compras-reportes', [ComprasController::class, 'reportes'])->name('compras.reporte');
 Route::resource('compras', ComprasController::class);
 
+Route::get('notificaciones-lista', [Notificacion_InsController::class, 'listaN'])->name('compras.notificaciones.lista');
+Route::get('cancelarNoti', function () {
+    return redirect()->route('compras.home')->with('datos', 'Acción Cancelada ..!');
+})->name('notifC.cancelar');
+Route::get('notifC/{id}/confirmar', [Notificacion_InsController::class, 'confirmar2'])->name('notifC.confirmar');
 
+Route::post('/notifDestroy/{id}', [Notificacion_InsController::class, 'destroy2'])->name('notifC.destroy2');
 /*--------------------------- MARKTING -------------------------*/
 Route::get('registro-marketing', [Marketing_RegisterController::class, 'show'])->name('marketing.register.show');
 Route::post('registro-marketing', [Marketing_RegisterController::class, 'register'])->name('marketing.register');
