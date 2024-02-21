@@ -1,15 +1,15 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2023 a las 21:09:18
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- -- phpMyAdmin SQL Dump
+-- -- version 5.2.1
+-- -- https://www.phpmyadmin.net/
+-- --
+-- -- Servidor: 127.0.0.1
+-- -- Tiempo de generación: 25-07-2023 a las 21:09:18
+-- -- Versión del servidor: 10.4.28-MariaDB
+-- -- Versión de PHP: 8.0.28
 
---
--- Base de datos: `bdprueba`
---
+-- --
+-- -- Base de datos: `bdprueba`
+-- --
 
 drop database if exists bdprueba;
 create database bdprueba;
@@ -103,7 +103,7 @@ CREATE TABLE `detalle_pedido` (
   `cantidad` int(11) DEFAULT NULL,
   `precio` float DEFAULT NULL,
   `importe` float DEFAULT NULL
- 
+
 );
 
 -- --------------------------------------------------------
@@ -342,7 +342,7 @@ CREATE TABLE `repartidor` (
 --
 
 CREATE TABLE `users` (
-  `id` int(20) UNSIGNED NOT NULL,
+  `id` int(20) AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) DEFAULT NULL,
   `rol` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
@@ -416,7 +416,6 @@ ALTER TABLE `administrador`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD UNIQUE KEY `users_username_unique` (`username`);
 --
@@ -469,7 +468,7 @@ ALTER TABLE `insumo`
 
 CREATE TABLE notificaciones_insumo (
     idNoti INT AUTO_INCREMENT PRIMARY KEY,
-    insumo_id INT (11) not null, 
+    insumo_id INT (11) not null,
     mensaje VARCHAR(100) NOT NULL,
     fecha_creacion date not null,
     hora_creacion varchar (15) not null,
