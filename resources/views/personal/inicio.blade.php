@@ -1,4 +1,4 @@
-@extends('transporte.plantillaT')
+@extends('personal.plantillaT')
 
 @section('titulo', '.:: Restaurant ::.')
 
@@ -33,7 +33,7 @@
                     <i class="fas fa-truck fa-4x mb-4" style="color: #ffc44c;"></i>
                     <h5 class="card-title">Gestionar Entrevistas</h5>
                     <p class="card-text">Administre los entrevistas y sus fechas.</p>
-                    <a href="{{ route('repartidor.index') }}" class="btn btn-primary">Ver Repartidores</a>
+                    <a href="{{ route('entrevista.index') }}" class="btn btn-primary">Ver Entrevistas</a>
                 </div>
             </div>
         </div>

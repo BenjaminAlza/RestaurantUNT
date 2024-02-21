@@ -1,4 +1,4 @@
-@extends('transporte.plantillaT')
+@extends('personal.plantillaT')
 
 @section('titulo', '.:: Restaurant ::.')
 

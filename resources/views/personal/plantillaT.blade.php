@@ -31,7 +31,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('homeT') }}" class="nav-link">Home</a>
+                    <a href="{{ route('homePer') }}" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -83,7 +83,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('homeT') }}" class="brand-link">
+            <a href="{{ route('homePer') }}" class="brand-link">
                 <img src="{{ asset('img/mesa.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">RESTAURANT "U.N.T."</span>
@@ -100,7 +100,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ route('home') }}" class="d-block"
+                        <a href="{{ route('homePer') }}" class="d-block"
                             style="text-transform: uppercase;">{{ auth()->user()->rol }}:
                             {{ auth()->user()->name ?? auth()->user()->username }}</a>
                     </div>
@@ -119,121 +119,47 @@
                             <!--REPARTIDORES -->
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-motorcycle"></i>
+                                    <i class="nav-icon fas fa-file"></i>
                                     <p>
-                                        REPARTIDOR
+                                        ENTREVISTAS
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('repartidor.index') }}" class="nav-link">
+                                        <a href="{{ route('entrevista.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
                                             <p>Ver Listado</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('repartidor.create') }}" class="nav-link">
-                                            <i class="fas fa-user-plus nav-icon"></i>
-                                            <!-- Icono de usuario con signo + -->
-                                            <p>Registrar Repartidor</p>
-                                        </a>
-                                    </li>
+                                 
                                 </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
-                                        CLIENTE
+                                        POSTULANTES
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('clienteT.index') }}" class="nav-link">
+                                        <a href="{{ route('personal.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
                                             <p>Ver Listado</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('clienteT.create') }}" class="nav-link">
+                                        <a href="{{ route('personal.create') }}" class="nav-link">
                                             <i class="fas fa-user-plus nav-icon"></i>
                                             <!-- Icono de usuario con signo + -->
-                                            <p>Registrar Cliente</p>
+                                            <p>Registrar Postulante</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-utensils"></i>
-                                    <p>
-                                        PRODUCTO
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('productoT.index') }}" class="nav-link">
-                                            <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
-                                            <p>Ver Listado</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('productoT.create') }}" class="nav-link">
-                                            <i class="fas fa-plus nav-icon"></i> <!-- Icono de signo + -->
-                                            <p>Registrar Producto</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-shopping-cart"></i>
-                                    <p>
-                                        PEDIDO
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('pedidoT.index') }}" class="nav-link">
-                                            <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
-                                            <p>Ver Listado</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('pedidoT.create') }}" class="nav-link">
-                                            <i class="fas fa-plus nav-icon"></i> <!-- Icono de signo + -->
-                                            <p>Registrar Pedido</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
-                                    <p>
-                                        DETALLE PEDIDO
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('detalleT.create') }}" class="nav-link">
-                                            <i class="fas fa-plus nav-icon"></i> <!-- Icono de signo + -->
-                                            <p>Registrar detalles</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('detalleT.index') }}" class="nav-link">
-                                            <i class="fas fa-list nav-icon"></i> <!-- Icono de lista -->
-                                            <p>Ver listado</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                         
                         @endif
                         <!-- Cerrar sesión -->
                         <li class="nav-item">

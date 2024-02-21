@@ -43,6 +43,9 @@ CREATE TABLE `cliente` (
   `estado` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -283,6 +286,9 @@ INSERT INTO `postulante` (`id`, `dni`, `nombre`, `edad`, `puntaje`, `estado`) VA
 (4, '56789012', 'Ana Rodriguez', 28, 85.00, '1'),
 (5, '23456789', 'Luis Ramirez', 26, 78.00, '0');
 
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -355,6 +361,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `rol`, `email`, `username`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'administrador', 'admin@gmail.com', 'admin@gmail.com', NULL, '$2y$10$5JwAmYcai5.HexVY617/ROKC62pbeV/nweNMQr7Sop2pouA6f1ghm', NULL, '2023-07-25 13:45:37', '2023-07-25 13:45:37'),
 (2, NULL, 'Personal de almacén', 'pjuan@gmail.com', 'juan perez', NULL, '$2y$10$iJ.B09QCP.lIwkGw/DyeYe5efxZOM.7aNPFqU2NM.7gsh787QiID2', NULL, '2024-01-31 20:48:52', '2024-01-31 20:48:52');
+INSERT INTO `users` (`id`, `name`, `rol`, `email`, `username`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(4, NULL, 'administrador', 'pfernanda@gmail.com', 'Fernanda Pastor', NULL, '$2y$10$Wwm4gTeYup34v/0W4Q67gOrvLjx8FFn8mVAPx1X0oyKosl5rgQ9/W', NULL, '2024-02-21 20:22:10', '2024-02-21 20:22:10');
 
 -- --------------------------------------------------------
 --
@@ -522,6 +530,27 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `postulante`
   ADD PRIMARY KEY (`id`);
+
+
+
+CREATE TABLE `entrevista` (
+  `identrevista` int(11) NOT NULL,
+  `observaciones` varchar(40) not NULL,
+  `fecha` varchar(40) not NULL,
+  `hora` varchar(40) not NULL,
+  `idpersonal` int(11) not NULL,
+  `estado` tinyint(4) not NULL,
+  FOREIGN KEY (idpersonal) REFERENCES postulante(id),
+  primary key (identrevista)
+);
+
+
+INSERT INTO `entrevista` (`identrevista`, `observaciones`, `fecha`, `hora`, `idpersonal`, `estado`) VALUES
+(1, 'EXCELENTE', '2024-08-07','8:00' , 1, '1'),
+(2, 'FALLÓ TEST PSICOLOGICO', '2024-09-10', '12:20', 2, '1'),
+(3, 'Modetrado', '2024-11-12','9:00' ,3 , '0'),
+(4, 'EXCELENTE', '2024-10-10','9:00' , 4, '1');
+
 
 --
 -- Indices de la tabla `producto`

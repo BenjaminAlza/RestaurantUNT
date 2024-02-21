@@ -29,6 +29,7 @@ use App\Http\Controllers\Compras_HomeController;
 use App\Http\Controllers\Compras_LoginController;
 use App\Http\Controllers\Compras_RegisterController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\EntrevistaController;
 use App\Http\Controllers\Marketing_HomeController;
 use App\Http\Controllers\Marketing_LoginController;
 use App\Http\Controllers\Marketing_RegisterController;
@@ -135,6 +136,8 @@ Route::post('/personal', [PostulanteController::class, 'store'])->name('personal
 Route::get('cancelar', function () {
     return redirect()->route('personal.index')->with('datos', 'Acción Cancelada ..!');
 })->name('cancelar');
+
+Route::resource('entrevista', EntrevistaController::class);
 
 /*---------------------------TRANSPORTE Y DISTRIBUCION-------------------------*/
 
