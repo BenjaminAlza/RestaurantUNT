@@ -61,7 +61,7 @@
              @endif
         </td>
          <td>
-          @if ($itemMesa->disponibilidad==0)
+          @if ($itemMesa->disponibilidad==1)
               <div  align="center" style="width:110px; border-radius: 10px; font-family: Roboto, sans-serif; font-weight:bold; background-color: rgb(47, 255, 78)">Disponible</div>
           @else
               <div align="center" style="width:110px; border-radius: 10px;  font-family: Roboto, sans-serif; font-weight:bold; background-color: rgb(255, 45, 45)">Ocupada</div>

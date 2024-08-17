@@ -50,12 +50,12 @@ class MesaController extends Controller
 
         if($request->idpedido>0)
         {
-            $mesa->disponibilidad = '1';
+            $mesa->disponibilidad = '0';
             $mesa->idpedido = $request->idpedido;
         }
         else
         {
-            $mesa->disponibilidad = '0';
+            $mesa->disponibilidad = '1';
             $mesa->idpedido = null;
         }
         
@@ -105,12 +105,12 @@ class MesaController extends Controller
         
         if($request->idpedido>0)
         {
-            $mesa->disponibilidad = '1';
+            $mesa->disponibilidad = '0';
             $mesa->idpedido = $request->idpedido;
         }
         else
         {
-            $mesa->disponibilidad = '0';
+            $mesa->disponibilidad = '1';
             $mesa->idpedido = null;
         }
 
