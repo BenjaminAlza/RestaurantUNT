@@ -29,7 +29,7 @@
               <div class="card-body centros">
                   <h5 class="card-title">Mesa {{$itemMesa->idmesa}}</h5>
                   <p class="card-text">
-                      @if ($itemMesa->disponibilidad=="1")
+                      @if ($itemMesa->disponibilidad=="0")
                           <button style="width:20px; height: 20px; border-radius: 10px; font-family: Roboto, sans-serif; font-weight:bold; background-color: rgb(255, 47, 47)"></button>
                       @else
                           <button style="width:20px; height: 20px; border-radius: 10px; font-family: Roboto, sans-serif; font-weight:bold; background-color: rgb(47, 255, 78)"></button>
